@@ -5,6 +5,7 @@ import LandingPageImage from "../media/LandingPageImage.svg";
 import FacebookLogo from "../media/FacebookLogo.svg";
 import TwitterLogo from "../media/TwitterLogo.svg";
 import WhatsappLogo from "../media/WhatsappLogo.svg";
+import Register from "../components/Register";
 class LandingPage extends React.Component {
   state = {
     signInDisplay: true,
@@ -55,7 +56,7 @@ class LandingPage extends React.Component {
           </div>
           <div className="signInRegisterContainerDiv">
             {this.state.signInDisplay && <h1>Sign In</h1>}
-            {this.state.registerDisplay && <h1>Register</h1>}
+            {this.state.registerDisplay &&< Register/> }
           </div>
         </div>
         <div className="footer">
