@@ -6,6 +6,7 @@ import FacebookLogo from "../media/FacebookLogo.svg";
 import TwitterLogo from "../media/TwitterLogo.svg";
 import WhatsappLogo from "../media/WhatsappLogo.svg";
 import Register from "../components/Register";
+import SignIn from "../components/SignIn";
 class LandingPage extends React.Component {
   state = {
     signInDisplay: true,
@@ -28,15 +29,29 @@ class LandingPage extends React.Component {
           <div className="headerButtonsDiv">
             <div className="signInButtonDiv">
               <button
-                className="signInButton headerButton"
+                className={
+                  this.state.signInDisplay
+                    ? "signInButton headerButton"
+                    : "signInButton headerButton signInInactive"
+                }
                 onClick={this.handleSignin}
               >
                 Sign In
               </button>
-              <div className="borderBottom"></div>
+              <div
+                className={
+                  this.state.signInDisplay
+                    ? "borderBottom"
+                    : "borderBottom borderInactive"
+                }
+              ></div>
             </div>
             <button
-              className="registerButton headerButton"
+              className={
+                this.state.registerDisplay
+                  ? "registerButton headerButton registerActive"
+                  : "registerButton headerButton"
+              }
               onClick={this.handleRegister}
             >
               Register
@@ -55,8 +70,8 @@ class LandingPage extends React.Component {
             />
           </div>
           <div className="signInRegisterContainerDiv">
-            {this.state.signInDisplay && <h1>Sign In</h1>}
-            {this.state.registerDisplay &&< Register/> }
+            {this.state.registerDisplay && <Register />}
+            {this.state.signInDisplay && <SignIn />}
           </div>
         </div>
         <div className="footer">

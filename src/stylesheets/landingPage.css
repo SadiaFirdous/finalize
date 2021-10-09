@@ -25,6 +25,7 @@
   flex-direction: row;
   align-items: center;
   width: 20%;
+  margin-right: 7%;
 }
 
 .headerButton {
@@ -43,6 +44,9 @@
   height: 4px;
   border-radius: 10px;
 }
+.borderInactive {
+  background-color: #818589;
+}
 .signInButton {
   color: #4561f1;
   background: none;
@@ -50,17 +54,24 @@
   cursor: pointer;
   margin-bottom: 2px;
 }
+.signInInactive {
+  color: #818589;
+}
 .registerButton {
   background-color: white;
   border-radius: 25px;
   padding: 10px;
   border: none;
-  margin-left: 20%;
+  margin-left: 30%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding-left: 15px;
   padding-right: 15px;
   cursor: pointer;
   transition-duration: 0.1s;
+}
+.registerActive {
+  background-color: #4561f1;
+  color: white;
 }
 .registerButton:hover {
   background-color: #4561f1;
@@ -76,6 +87,7 @@
 .landingPageText {
   font-size: 40px;
   font-weight: bold;
+  margin-bottom: 5%;
 }
 .landingPageImage {
   height: 480px;
@@ -83,11 +95,16 @@
 .landingPageBodyDiv {
   display: flex;
   flex-direction: row;
+  padding: 4% 5%;
 }
 .signInRegisterContainerDiv {
   margin-left: 12%;
 }
 .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: #818589;
   display: flex;
   justify-content: space-between;
