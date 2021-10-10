@@ -1,0 +1,105 @@
+.createGroupDiv{
+    display: flex;
+    flex-direction: column;
+
+
+}
+.contentArea
+{
+background-color: #F9FBFC;
+display: flex;
+flex-direction: column;
+padding-top: 40px;
+padding-left: 40px;
+font-size: 35px;
+width: 100%;
+
+}
+
+.createGroupHeading
+{
+    font-size: 45px;
+    margin-left: 20px;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+.headingForDiv
+{
+    padding-top:25px; 
+    padding-bottom: 25px;
+  
+}
+.projectTitleDiv,
+.titleDiv,
+.projectDiv,
+.linkDiv
+{
+ padding-bottom: 20px;
+ padding-top:20px;
+ 
+}
+
+.aboutField
+{
+    font-size: 35px;
+    margin-left: 65px;
+    border-radius:9px;
+    height: 150px;
+    width: 60%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  
+}
+
+.projectField
+{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 35px;
+    border-radius:9px;
+    width: 60%;
+    height: 50px;
+    margin-left: 65px;
+}
+.projectDeadineField
+{  
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 35px;
+    border-radius:9px;
+    width: 50%;
+    height: 50px;
+
+}
+.linkText
+{
+    display: flex;
+    flex-direction: column;
+}
+.linkField
+{
+    padding: 10px; 
+    font-size: 35px;
+    margin-top: 35px;
+    margin-left:10px;
+    border-radius:9px;
+    width: 55%;
+    height: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    text-align: center;
+}
+.saveButton
+{
+    margin-top: 50px;
+    margin-left:50%;
+   width: 10%;
+   padding: 10px 10px ;
+  font-size: 30px;
+  background-color: #4561f1;
+  border-radius: 30px;
+  box-shadow: rgba(69, 97, 241, 0.35) 0pc 5px 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+ 
+}
