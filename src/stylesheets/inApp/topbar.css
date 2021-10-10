@@ -1,0 +1,56 @@
+.topDiv
+{
+    margin-top: 20px;
+
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+.searchWithArrowDiv
+{
+display: flex;
+align-items: center;
+margin-left:  262px;
+}
+.arrow{
+    margin-right: 6px;
+    width: 40px;
+}
+.searchBar
+{
+        border-radius:9px;
+    width: 450px;
+    height: 34.75px;
+    margin: 8px;
+    outline: none;
+   
+    font-size: 16px;
+text-align:left;
+
+}
+.searchBoxDiv
+{
+    display: flex;
+    border-color:#707070;
+}
+.magnifyingGlass{
+    margin-left: 20px;
+}
+.iconsDiv
+{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.notification
+{
+    width: 30px;
+margin-right: 30px;
+}
+.profilePhoto
+{
+    width: 50px;
+
+margin-right: 35px;
+
+}
