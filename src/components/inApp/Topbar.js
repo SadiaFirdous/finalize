@@ -2,30 +2,58 @@ import React, { Component } from "react";
 import NotifyBell from "../../media/Bell.svg";
 import User from "../../media/User.svg";
 import Arrow from "../../media/Arrow.svg";
-import MagnifyingGlass from "../../media/Magnifying Glass.svg"
+import MagnifyingGlass from "../../media/Magnifying Glass.svg";
 import "../../stylesheets/inApp/topbar.css";
-class Topbar extends React.Component{
-    render() {
-      return (
-        <div className="topDiv">
+import NotificationPanel from "./NotificationPanel";
+class Topbar extends React.Component {
+  state = {
+    name: "Sadia Firdous",
+    notificationPanelDisplay: false,
+  };
+  handleNotificationDisplay = () => {
+    let bool = this.state.notificationPanelDisplay;
+    this.setState({
+      name: "Sadia Firdous",
+      notificationPanelDisplay: !bool,
+    });
+  };
+  render() {
+    return (
+      <div className="topDiv">
         <div className="searchWithArrowDiv">
-
-        <img className="arrow" src={Arrow} alt="img" />
-        <div className="searchBoxDiv">
-        <img className="magnifyingGlass" src={MagnifyingGlass} alt="img" />
-
-        <input className="searchBar" placeholder="Search Anything"></input>
+          <img className="arrow" src={Arrow} alt="img" />
+          <div className="searchBoxDiv">
+            <img className="magnifyingGlass" src={MagnifyingGlass} alt="img" />
+            <input
+              className="searchBar"
+              placeholder="Search anything..."
+            ></input>
           </div>
         </div>
-         <div className="iconsDiv">
-          <img className="notification" src={NotifyBell} alt="img" />
+        <div className="iconsDiv">
+          <img
+            className={
+              this.state.notificationPanelDisplay
+                ? "notification notificationActive"
+                : "notification"
+            }
+            src={NotifyBell}
+            alt="img"
+            onClick={this.handleNotificationDisplay}
+          />
+          <div className="notificationPanelComponent">
+            {this.state.notificationPanelDisplay && <NotificationPanel />}
+          </div>
+
           <img className="profilePhoto" src={User} alt="img" />
-          <h2>Name</h2>
+          <span className="nameText">{this.state.name}</span>
+          <button className="logoutButton">
+            <span className="logoutText">Log Out</span>
+          </button>
         </div>
-        {/* <button className="">Sign In</button> */}
-        </div>
-      );
-    }
+      </div>
+    );
   }
+}
 
 export default Topbar;

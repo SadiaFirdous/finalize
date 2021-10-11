@@ -1,15 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import LandingPage from "./containers/landingPage";
-import createGroup from "./components/inApp/Creategroup";
+import Topbar from "./components/inApp/Topbar";
+import Dashboard from "./containers/inApp/dashboard";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/Creategroup" component={createGroup} />
-        
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/Topbar" component={Topbar} />
       </BrowserRouter>
     </div>
   );
