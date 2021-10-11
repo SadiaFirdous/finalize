@@ -4,10 +4,10 @@ import Approved from "./Approved";
 import About from "./About";
 class GroupInfo extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="GroupInfoMainDiv">
         <div className="sectionsDiv">
+          <h1>{this.props.groupData.projectName}</h1>
           <button onClick={this.props.handleSubmissions}>
             {"Submitted " + "(" + "60" + ")"}
           </button>

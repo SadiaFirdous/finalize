@@ -1,14 +1,45 @@
 import React, { Component } from "react";
 import "../../stylesheets/inApp/body.css";
 import CreateGroup from "./CreateGroup";
-import YourGroups from "./YourGroups";
+import GroupsList from "./GroupsList";
 import GroupInfo from "./GroupInfo";
 class Body extends React.Component {
+  yourGroupsData = [
+    {
+      projectName: "Project Management",
+      aboutTheProject: "About the project",
+      people: ["A", "B", "C"],
+    },
+    {
+      projectName: "Project Management",
+      aboutTheProject: "About the project",
+      people: ["A", "B", "C"],
+    },
+    {
+      projectName: "Project Management",
+      aboutTheProject: "About the project",
+      people: ["A", "B", "C"],
+    },
+    {
+      projectName: "Project Management",
+      aboutTheProject: "About the project",
+      people: ["A", "B", "C"],
+    },
+    {
+      projectName: "Project Management",
+      aboutTheProject: "About the project",
+      people: ["A", "B", "C"],
+    },
+  ];
   state = {
+    //inside group info sections
     submittedDisplay: true,
     duplicatesDisplay: false,
     approvedDisplay: false,
     aboutDisplay: false,
+    //groupInfo display and data
+    groupInfoDisplay: false,
+    groupData: {},
   };
   handleSubmissions = () => {
     this.setState({
@@ -16,6 +47,7 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
+      groupInfoDisplay: false,
     });
   };
   handleDuplicates = () => {
@@ -24,6 +56,7 @@ class Body extends React.Component {
       duplicatesDisplay: true,
       approvedDisplay: false,
       aboutDisplay: false,
+      groupInfoDisplay: false,
     });
   };
   handleApproved = () => {
@@ -32,6 +65,7 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: true,
       aboutDisplay: false,
+      groupInfoDisplay: false,
     });
   };
   handleAbout = () => {
@@ -40,8 +74,19 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: true,
+      groupInfoDisplay: false,
     });
   };
+  // openGroupInfo = (groupData) => {
+  //   this.setState({
+  //     submittedDisplay: false,
+  //     duplicatesDisplay: false,
+  //     approvedDisplay: false,
+  //     aboutDisplay: false,
+  //     groupInfoDisplay: true,
+  //     // groupData: groupData,
+  //   });
+  // };
 
   render() {
     return (
@@ -52,6 +97,12 @@ class Body extends React.Component {
         <div className="contentArea">
           {this.props.createGroupDisplay && <CreateGroup />}
           {this.props.groupsDisplay && (
+            <GroupsList
+              yourGroupsData={this.yourGroupsData}
+              openGroupInfo={this.openGroupInfo}
+            />
+          )}
+          {this.state.groupInfoDisplay && (
             <GroupInfo
               handleSubmissions={this.handleSubmissions}
               handleDuplicates={this.handleDuplicates}
@@ -61,6 +112,7 @@ class Body extends React.Component {
               duplicatesDisplay={this.state.duplicatesDisplay}
               approvedDisplay={this.state.approvedDisplay}
               aboutDisplay={this.state.aboutDisplay}
+              groupData={this.state.groupData}
             />
           )}
         </div>
