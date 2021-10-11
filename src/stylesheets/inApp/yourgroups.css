@@ -1,0 +1,61 @@
+.groupDiv
+{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    padding: 20px 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width:18%;
+}
+.projectDetails
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.projectSetitngsDiv
+{
+display: flex;
+justify-content: right;
+}
+.projectSettingsIcon
+{
+    height: 8px;
+ }  
+.projectName
+{
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 20px;
+
+}
+.aboutTheProject
+{
+    margin-top: 6px;
+    margin-left: 20px;
+    font-size: 18px;
+    color:#707070;
+
+}
+.projectStatsDiv
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin-top: 30px;
+    /* background-color:red; */
+    margin-left: 20px;
+
+}
+.peopleIconFirst,
+.peopleIconSecond,
+.peopleIconNumber
+{
+
+    height: 25px;
+}
+
