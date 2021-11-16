@@ -23,6 +23,13 @@ class Dashboard extends React.Component {
       createGroupActive: false,
     });
   };
+  handleGroupInfo = (groupName) => {
+    this.setState({
+      bodyName: groupName,
+      groupsActive: false,
+      createGroupActive: false,
+    });
+  };
   render() {
     return (
       <div className="dashboardMainDiv">
@@ -33,6 +40,7 @@ class Dashboard extends React.Component {
         <div className="contentDiv">
           <Topbar />
           <Body
+            handleGroupInfo={this.handleGroupInfo}
             bodyName={this.state.bodyName}
             groupsDisplay={this.state.groupsActive}
             createGroupDisplay={this.state.createGroupActive}

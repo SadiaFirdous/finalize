@@ -7,7 +7,6 @@ class GroupInfo extends React.Component {
     return (
       <div className="GroupInfoMainDiv">
         <div className="sectionsDiv">
-          <h1>{this.props.groupData.projectName}</h1>
           <button onClick={this.props.handleSubmissions}>
             {"Submitted " + "(" + "60" + ")"}
           </button>

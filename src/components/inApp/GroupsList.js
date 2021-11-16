@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+
 import EachGroupCard from "./EachGroupCard";
 import "../../stylesheets/inApp/groupsList.css";
 class GroupsList extends React.Component {
@@ -8,8 +10,9 @@ class GroupsList extends React.Component {
         {this.props.yourGroupsData.map((groupData) => {
           return (
             <EachGroupCard
+              key={this.props.yourGroupsData.indexOf(groupData)}
               groupData={groupData}
-              // onClick={this.props.openGroupInfo(groupData)}
+              openGroupInfo={this.props.openGroupInfo}
             />
           );
         })}

@@ -11,12 +11,12 @@ class Body extends React.Component {
       people: ["A", "B", "C"],
     },
     {
-      projectName: "Project Management",
+      projectName: "asfasfasjas",
       aboutTheProject: "About the project",
       people: ["A", "B", "C"],
     },
     {
-      projectName: "Project Management",
+      projectName: "bbbbbb",
       aboutTheProject: "About the project",
       people: ["A", "B", "C"],
     },
@@ -47,7 +47,7 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
-      groupInfoDisplay: false,
+      groupInfoDisplay: true,
     });
   };
   handleDuplicates = () => {
@@ -56,7 +56,7 @@ class Body extends React.Component {
       duplicatesDisplay: true,
       approvedDisplay: false,
       aboutDisplay: false,
-      groupInfoDisplay: false,
+      groupInfoDisplay: true,
     });
   };
   handleApproved = () => {
@@ -65,7 +65,7 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: true,
       aboutDisplay: false,
-      groupInfoDisplay: false,
+      groupInfoDisplay: true,
     });
   };
   handleAbout = () => {
@@ -74,19 +74,20 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: true,
-      groupInfoDisplay: false,
+      groupInfoDisplay: true,
     });
   };
-  // openGroupInfo = (groupData) => {
-  //   this.setState({
-  //     submittedDisplay: false,
-  //     duplicatesDisplay: false,
-  //     approvedDisplay: false,
-  //     aboutDisplay: false,
-  //     groupInfoDisplay: true,
-  //     // groupData: groupData,
-  //   });
-  // };
+  openGroupInfo = (groupData) => {
+    this.props.handleGroupInfo(groupData.projectName);
+    this.setState({
+      submittedDisplay: true,
+      duplicatesDisplay: false,
+      approvedDisplay: false,
+      aboutDisplay: false,
+      groupInfoDisplay: true,
+      groupData: groupData,
+    });
+  };
 
   render() {
     return (
