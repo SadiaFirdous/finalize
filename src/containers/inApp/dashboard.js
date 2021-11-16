@@ -7,6 +7,7 @@ class Dashboard extends React.Component {
   state = {
     groupsActive: true,
     createGroupActive: false,
+    groupInfoDisplay: false,
     bodyName: "YOUR GROUPS",
   };
   handleCreateGroup = () => {
@@ -21,6 +22,7 @@ class Dashboard extends React.Component {
       bodyName: "YOUR GROUPS",
       groupsActive: true,
       createGroupActive: false,
+      groupInfoDisplay: false,
     });
   };
   handleGroupInfo = (groupName) => {
@@ -29,6 +31,14 @@ class Dashboard extends React.Component {
       groupsActive: false,
       createGroupActive: false,
     });
+  };
+  setGroupInfoDisplay = (bool, groupName) => {
+    console.log(this.state);
+    let newState = { ...this.state };
+    newState.groupInfoDisplay = bool;
+    newState.bodyName = groupName;
+    newState.groupsActive = false;
+    this.setState(newState);
   };
   render() {
     return (
@@ -44,6 +54,8 @@ class Dashboard extends React.Component {
             bodyName={this.state.bodyName}
             groupsDisplay={this.state.groupsActive}
             createGroupDisplay={this.state.createGroupActive}
+            groupInfoDisplay={this.state.groupInfoDisplay}
+            setGroupInfoDisplay={this.setGroupInfoDisplay}
           />
         </div>
       </div>

@@ -9,6 +9,32 @@ class Body extends React.Component {
       projectName: "Project Management",
       aboutTheProject: "About the project",
       people: ["A", "B", "C"],
+      submittedData: [
+        {
+          projectName: "Library Mang.",
+          names: ["106", "91"],
+          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+        },
+        {
+          projectName: "Library Mang.",
+          names: ["106", "91"],
+          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+        },
+        {
+          projectName: "Library Mang.",
+          names: ["106", "91"],
+          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+        },
+        {
+          projectName: "Library Mang.",
+          names: ["106", "91"],
+          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+        },
+      ],
     },
     {
       projectName: "asfasfasjas",
@@ -38,7 +64,6 @@ class Body extends React.Component {
     approvedDisplay: false,
     aboutDisplay: false,
     //groupInfo display and data
-    groupInfoDisplay: false,
     groupData: {},
   };
   handleSubmissions = () => {
@@ -47,7 +72,6 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
-      groupInfoDisplay: true,
     });
   };
   handleDuplicates = () => {
@@ -56,7 +80,6 @@ class Body extends React.Component {
       duplicatesDisplay: true,
       approvedDisplay: false,
       aboutDisplay: false,
-      groupInfoDisplay: true,
     });
   };
   handleApproved = () => {
@@ -65,7 +88,6 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: true,
       aboutDisplay: false,
-      groupInfoDisplay: true,
     });
   };
   handleAbout = () => {
@@ -74,7 +96,6 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: true,
-      groupInfoDisplay: true,
     });
   };
   openGroupInfo = (groupData) => {
@@ -84,9 +105,9 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
-      groupInfoDisplay: true,
       groupData: groupData,
     });
+    this.props.setGroupInfoDisplay(true, groupData.projectName);
   };
 
   render() {
@@ -103,7 +124,7 @@ class Body extends React.Component {
               openGroupInfo={this.openGroupInfo}
             />
           )}
-          {this.state.groupInfoDisplay && (
+          {this.props.groupInfoDisplay && (
             <GroupInfo
               handleSubmissions={this.handleSubmissions}
               handleDuplicates={this.handleDuplicates}

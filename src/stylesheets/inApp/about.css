@@ -1,0 +1,9 @@
+.projectTitleDiv,
+.aboutProjectDiv {
+  margin: 22px;
+}
+.projectTitleText,
+.aboutText {
+  font-weight: bold;
+  margin-right: 10px;
+}

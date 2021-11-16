@@ -1,0 +1,21 @@
+.submitted,
+.duplicates,
+.approved,
+.about {
+  margin-top: 10px;
+  width: 14%;
+  padding: 8px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: rgba(153, 152, 189, 0.35) 0pc 5px 15px;
+  border: none;
+  color: black;
+  cursor: pointer;
+  margin: 22px;
+}
+.about {
+  width: 10%;
+}
