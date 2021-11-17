@@ -9,7 +9,11 @@ class SignIn extends React.Component {
     return (
       <div className="signInMainDiv">
         <input className="emailInput" placeholder="Enter email"></input>
-        <input className="passwordInput" placeholder="Password"></input>
+        <input
+          className="passwordInput"
+          placeholder="Password"
+          type="password"
+        ></input>
         <div className="forgotPasswordDiv">
           <Link className="forgotPasswordLink">Forgot password?</Link>
         </div>

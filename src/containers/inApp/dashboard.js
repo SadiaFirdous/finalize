@@ -48,15 +48,19 @@ class Dashboard extends React.Component {
           handleGroups={this.handleGroups}
         />
         <div className="contentDiv">
-          <Topbar />
-          <Body
-            handleGroupInfo={this.handleGroupInfo}
-            bodyName={this.state.bodyName}
-            groupsDisplay={this.state.groupsActive}
-            createGroupDisplay={this.state.createGroupActive}
-            groupInfoDisplay={this.state.groupInfoDisplay}
-            setGroupInfoDisplay={this.setGroupInfoDisplay}
-          />
+          <div className="topbarDiv">
+            <Topbar />
+          </div>
+          <div className="bodyDiv">
+            <Body
+              handleGroupInfo={this.handleGroupInfo}
+              bodyName={this.state.bodyName}
+              groupsDisplay={this.state.groupsActive}
+              createGroupDisplay={this.state.createGroupActive}
+              groupInfoDisplay={this.state.groupInfoDisplay}
+              setGroupInfoDisplay={this.setGroupInfoDisplay}
+            />
+          </div>
         </div>
       </div>
     );

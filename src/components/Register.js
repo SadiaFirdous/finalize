@@ -18,8 +18,13 @@ class Register extends React.Component {
         </div>
 
         <input className="emailInput" placeholder="Enter email"></input>
-        <input className="passwordInput" placeholder="Password"></input>
         <input
+          type="password"
+          className="passwordInput"
+          placeholder="Password"
+        ></input>
+        <input
+          type="password"
           className="confirmPasswordInput"
           placeholder="Confirm Password"
         ></input>

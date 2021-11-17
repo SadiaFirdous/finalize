@@ -1,0 +1,25 @@
+.buttonDiv {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: 16px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.statusLogo {
+  width: 20px;
+}
+.button {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+}
+.green {
+  background-color: #52d452;
+  color: white;
+}
+.blue {
+  background-color: #4561f1;
+  color: white;
+}

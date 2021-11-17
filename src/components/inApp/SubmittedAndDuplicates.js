@@ -5,36 +5,39 @@ import Cross from "../../media/Cross.svg";
 class SubmittedAndDuplicates extends React.Component {
   render() {
     return (
-      <div>
-        ({true}?
-        {this.props.submittedData.map((data) => {
+      <div className="submittedAndDuplicatesMainDiv">
+        {this.props.Data.map((data) => {
           return (
-            <div className="listProjects">
-              <span className="serialNumber">1</span>
-              <div className="projectNameDiv">
-                <span className="projectTitle">data.projectName</span>
+            <div className="listProjects" key={this.props.Data.indexOf(data)}>
+              <div className="leftDiv">
+                <div className="projectNameDiv">
+                  <span className="projectTitle">{data.projectName}</span>
+                </div>
               </div>
-              <div className="rollNumbersDiv">
-                <span className="rollnumbers">91 106</span>
-              </div>
-
-              <div className="options">
-                <div className="acceptDiv">
-                  <img className="greenTickLogo" src={GreenTick} alt="img" />
-                  <button className="accept">Accept</button>
+              <div className="rightDiv">
+                <div className="rollNumbersDiv">
+                  <span className="rollnumbers">
+                    {data.names[0] + " " + data.names[1]}
+                  </span>
                 </div>
 
-                <div className="declineDiv">
-                  <img className="CrossLogo" src={Cross} alt="img" />
-                  <button className="decline">Decline</button>
-                </div>
+                <div className="options">
+                  <div className="acceptDiv">
+                    <img className="greenTickLogo" src={GreenTick} alt="img" />
+                    <button className="accept">Accept</button>
+                  </div>
 
-                <button className="comments">Comment</button>
+                  <div className="declineDiv">
+                    <img className="CrossLogo" src={Cross} alt="img" />
+                    <button className="decline">Decline</button>
+                  </div>
+
+                  <button className="comments">Comment</button>
+                </div>
               </div>
             </div>
           );
         })}
-        : {"Duplicated"})
       </div>
     );
   }
