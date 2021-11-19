@@ -42,7 +42,14 @@ class Approved extends React.Component {
                   </div>
 
                   <div className="declineDiv">
-                    <button className="decline">
+                    <button
+                      className="decline"
+                      onClick={
+                        data.completed
+                          ? this.props.handleViewSubmissions
+                          : this.props.handleComments
+                      }
+                    >
                       {data.completed ? "View Submission" : "Comment"}
                     </button>
                   </div>

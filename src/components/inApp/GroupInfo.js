@@ -3,6 +3,7 @@ import SubmittedAndDuplicates from "./SubmittedAndDuplicates";
 import "../../stylesheets/inApp/groupInfo.css";
 import Approved from "./Approved";
 import About from "./About";
+import ViewSubmissions from "./ViewSubmissions";
 class GroupInfo extends React.Component {
   computeApprovedData = () => {};
   render() {
@@ -66,10 +67,17 @@ class GroupInfo extends React.Component {
           )}
 
           {this.props.approvedDisplay && (
-            <Approved Data={this.props.groupData.submittedData} />
+            <Approved
+              Data={this.props.groupData.submittedData}
+              handleViewSubmissions={this.props.handleViewSubmissions}
+              handleComments={this.props.handleComments}
+            />
           )}
           {this.props.aboutDisplay && (
             <About groupData={this.props.groupData} />
+          )}
+          {this.props.viewSubmissionDisplay && (
+            <ViewSubmissions teamData={this.props.teamData} />
           )}
         </div>
       </div>

@@ -17,6 +17,7 @@ class Body extends React.Component {
           comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
           isApproved: false,
           completed: false,
+          link: "www.google.com",
         },
         {
           projectName: "helloasfhasjfshjfdsfdsgdsgdh",
@@ -25,6 +26,7 @@ class Body extends React.Component {
           comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
           completed: true,
           isApproved: true,
+          link: "www.google.com",
         },
       ],
       duplicatesData: [
@@ -35,6 +37,7 @@ class Body extends React.Component {
           comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
           isApproved: false,
           completed: false,
+          link: "www.google.com",
         },
         {
           projectName: "b",
@@ -43,6 +46,7 @@ class Body extends React.Component {
           comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
           completed: true,
           isApproved: false,
+          link: "www.google.com",
         },
       ],
     },
@@ -73,8 +77,10 @@ class Body extends React.Component {
     duplicatesDisplay: false,
     approvedDisplay: false,
     aboutDisplay: false,
+    viewSubmissionDisplay: false,
     //groupInfo display and data
     groupData: {},
+    teamData: {},
   };
   handleSubmissions = () => {
     this.setState({
@@ -82,6 +88,7 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
+      viewSubmissionDisplay: false,
     });
   };
   handleDuplicates = () => {
@@ -90,14 +97,17 @@ class Body extends React.Component {
       duplicatesDisplay: true,
       approvedDisplay: false,
       aboutDisplay: false,
+      viewSubmissionDisplay: false,
     });
   };
   handleApproved = () => {
+    console.log("approvedCalled");
     this.setState({
       submittedDisplay: false,
       duplicatesDisplay: false,
       approvedDisplay: true,
       aboutDisplay: false,
+      viewSubmissionDisplay: false,
     });
   };
   handleAbout = () => {
@@ -105,6 +115,7 @@ class Body extends React.Component {
       submittedDisplay: false,
       duplicatesDisplay: false,
       approvedDisplay: false,
+      viewSubmissionDisplay: false,
       aboutDisplay: true,
     });
   };
@@ -115,9 +126,24 @@ class Body extends React.Component {
       duplicatesDisplay: false,
       approvedDisplay: false,
       aboutDisplay: false,
+      viewSubmissionDisplay: false,
       groupData: groupData,
     });
     this.props.setGroupInfoDisplay(true, groupData.projectName);
+  };
+  handleViewSubmissions = (data) => {
+    console.log(data);
+    this.setState({
+      submittedDisplay: false,
+      duplicatesDisplay: false,
+      approvedDisplay: false,
+      viewSubmissionDisplay: true,
+      aboutDisplay: false,
+      teamData: data,
+    });
+  };
+  handleComments = () => {
+    console.log("hello");
   };
 
   render() {
@@ -140,11 +166,15 @@ class Body extends React.Component {
               handleDuplicates={this.handleDuplicates}
               handleApproved={this.handleApproved}
               handleAbout={this.handleAbout}
+              handleViewSubmissions={this.handleViewSubmissions}
+              handleComments={this.handleComments}
               submittedDisplay={this.state.submittedDisplay}
               duplicatesDisplay={this.state.duplicatesDisplay}
               approvedDisplay={this.state.approvedDisplay}
               aboutDisplay={this.state.aboutDisplay}
+              viewSubmissionDisplay={this.state.viewSubmissionDisplay}
               groupData={this.state.groupData}
+              teamData={this.state.teamData}
             />
           )}
         </div>
