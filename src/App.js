@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
+import React, { Component } from "react";
+
 import LandingPage from "./containers/landingPage";
 import Topbar from "./components/inApp/Topbar";
 import Dashboard from "./containers/inApp/dashboard";
