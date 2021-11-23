@@ -23,6 +23,8 @@ class EachGroupCard extends React.Component {
       <div
         className="groupDiv"
         onClick={() => {
+          console.log("inEachGroupInfo");
+          console.log(this.props.groupData);
           this.props.openGroupInfo(this.props.groupData);
         }}
       >
@@ -39,19 +41,21 @@ class EachGroupCard extends React.Component {
           <img className="peopleIconSecond" src={PeopleLogo} alt="img" />
           <span>{this.state.count + "+"}</span>
         </div>
-        <div className="cardSettingDiv">
-          <img
-            className="deleteicon"
-            src={DeleteIcon}
-            alt="img"
-            onClick={() => {
-              alert(
-                `Are you sure you want delete ${this.props.groupData.projectName} ?`
-              );
-            }}
-          />
-          <img className="cardSettingsIcon" src={CardSettings} alt="img" />
-        </div>
+        {this.props.isTeacher && (
+          <div className="cardSettingDiv">
+            <img
+              className="deleteicon"
+              src={DeleteIcon}
+              alt="img"
+              onClick={() => {
+                alert(
+                  `Are you sure you want delete ${this.props.groupData.projectName} ?`
+                );
+              }}
+            />
+            <img className="cardSettingsIcon" src={CardSettings} alt="img" />
+          </div>
+        )}
       </div>
     );
   }

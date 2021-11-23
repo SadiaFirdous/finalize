@@ -5,7 +5,7 @@ class ViewSubmission extends React.Component {
   render() {
     return (
       <div className="ViewSubmissionMainDiv">
-        <div className="projectTitleDiv">
+        <div className="projectTitleDv">
           <span className="projectNameText">Project Name: </span>
           <span>{this.props.teamData.projectName}</span>
         </div>
@@ -16,21 +16,23 @@ class ViewSubmission extends React.Component {
         </div>
         <div className="commentsProjectDiv">
           <span className="commentsText">Comments :</span>
-          <textarea columns="50" rows="10" class="commentsField"></textarea>
+          <textarea columns="50" rows="10" class="commentsField">
+            {this.props.teamData.comments}
+          </textarea>
         </div>
 
         <div className="teamMembersDiv">
           <span className="teamMembers">Team Members: </span>
-          <span className="button1">1602-19-733-091</span>
-          <button className="button2">1602-19-733-091</button>
-          <button className="button3">1602-19-733-091</button>
-          <button className="button4">1602-19-733-091</button>
-          <button className="button5">1602-19-733-091</button>
+          {this.props.teamData.names.map((name) => {
+            return <span className="name">{name}</span>;
+          })}
         </div>
 
         <div className="linkProjectDiv">
           <span className="link">Link: </span>
-          {/* <Link to={this.props.teamData.link}>{this.props.teamData.link}</Link> */}
+          <a href={this.props.teamData.link} target="_blank">
+            {this.props.teamData.link}
+          </a>
         </div>
       </div>
     );

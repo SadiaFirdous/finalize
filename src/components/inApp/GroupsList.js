@@ -13,6 +13,7 @@ class GroupsList extends React.Component {
               key={this.props.yourGroupsData.indexOf(groupData)}
               groupData={groupData}
               openGroupInfo={this.props.openGroupInfo}
+              isTeacher={this.props.isTeacher}
             />
           );
         })}

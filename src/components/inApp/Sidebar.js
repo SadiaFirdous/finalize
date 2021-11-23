@@ -32,19 +32,24 @@ class Sidebar extends React.Component {
               Groups
             </span>
           </div>
-          <div className="topDivSidebarSection">
-            <img className="sectionLogo" src={Announcements} alt="img" />
-            <span className="sectionName">Announcements</span>
-          </div>
+          {this.props.isTeacher && (
+            <div className="topDivSidebarSection">
+              <img className="sectionLogo" src={Announcements} alt="img" />
+              <span className="sectionName">Announcements</span>
+            </div>
+          )}
         </div>
 
         <div className="sidebarBottomDiv">
-          <button
-            className="createNewButton"
-            onClick={this.props.handleCreateGroup}
-          >
-            + Create group
-          </button>
+          {this.props.isTeacher && (
+            <button
+              className="createNewButton"
+              onClick={this.props.handleCreateGroup}
+            >
+              + Create group
+            </button>
+          )}
+
           <div className="bottomDivSidebarSection">
             <img className="sectionLogo" src={Help} alt="img" />
             <span className="sectionName">Help</span>

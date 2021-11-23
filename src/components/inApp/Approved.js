@@ -46,8 +46,12 @@ class Approved extends React.Component {
                       className="decline"
                       onClick={
                         data.completed
-                          ? this.props.handleViewSubmissions
-                          : this.props.handleComments
+                          ? () => {
+                              this.props.handleViewSubmissions(data);
+                            }
+                          : () => {
+                              this.props.handleComments();
+                            }
                       }
                     >
                       {data.completed ? "View Submission" : "Comment"}

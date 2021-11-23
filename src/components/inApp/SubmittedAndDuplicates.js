@@ -4,6 +4,7 @@ import GreenTick from "../../media/GreenTick.svg";
 import Cross from "../../media/Cross.svg";
 class SubmittedAndDuplicates extends React.Component {
   render() {
+    console.log(this.props.isTeacher);
     return (
       <div className="submittedAndDuplicatesMainDiv">
         {this.props.Data.map((data) => {
@@ -16,24 +17,30 @@ class SubmittedAndDuplicates extends React.Component {
               </div>
               <div className="rightDiv">
                 <div className="rollNumbersDiv">
-                  <span className="rollnumbers">
-                    {data.names[0] + " " + data.names[1]}
-                  </span>
+                  {data.names.map((roll) => {
+                    return <span className="rollnumbers">{roll}</span>;
+                  })}
                 </div>
 
-                <div className="options">
-                  <div className="acceptDiv">
-                    <img className="greenTickLogo" src={GreenTick} alt="img" />
-                    <button className="accept">Accept</button>
-                  </div>
+                {this.props.isTeacher && (
+                  <div className="options">
+                    <div className="acceptDiv">
+                      <img
+                        className="greenTickLogo"
+                        src={GreenTick}
+                        alt="img"
+                      />
+                      <button className="accept">Accept</button>
+                    </div>
 
-                  <div className="declineDiv">
-                    <img className="CrossLogo" src={Cross} alt="img" />
-                    <button className="decline">Decline</button>
-                  </div>
+                    <div className="declineDiv">
+                      <img className="CrossLogo" src={Cross} alt="img" />
+                      <button className="decline">Decline</button>
+                    </div>
 
-                  <button className="comments">Comment</button>
-                </div>
+                    <button className="comments">Comment</button>
+                  </div>
+                )}
               </div>
             </div>
           );

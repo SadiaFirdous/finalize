@@ -1,4 +1,4 @@
-.projectTitleDiv,
+.projectTitleDv,
 .abstractProjectDiv,
 .prototypeDiv,
 .commentsProjectDiv,
@@ -34,11 +34,7 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   resize: none;
 }
-.button1,
-.button2,
-.button3,
-.button4,
-.button5 {
+.name {
   margin-top: 10px;
   width: 70%;
   padding: 8px;
