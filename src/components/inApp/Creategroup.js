@@ -4,7 +4,7 @@ class CreateGroup extends React.Component {
   render() {
     return (
       <div>
-        <div className="projectTitleDiv">
+        <div className="projectTitleDv">
           <span className="ProjectTitle">Project Title :</span>
           <input className="projectField" placeholder></input>
         </div>
@@ -14,13 +14,15 @@ class CreateGroup extends React.Component {
         </div>
         <div className="projectDiv">
           <span className="projectDeadine">Project Deadline: </span>
-          <input className="projectDeadineField" placeholder></input>
+          <input className="projectDeadineField" type="datetime-local"></input>
         </div>
         <div className="linkDiv">
           <span className="linkText">
             Share the below link for people to join:
           </span>
-          <input className="linkField" placeholder="Link"></input>
+          <text className="linkField" placeholder="Link">
+            http://bit.ly/245cK
+          </text>
         </div>
         <div className="saveButtonDiv">
           <button className="saveButton">Save</button>

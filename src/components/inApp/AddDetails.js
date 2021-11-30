@@ -12,7 +12,6 @@ class AddDetails extends React.Component {
         <div className="addAbstractProjectDiv">
           <span className="addAbstractText">Abstract :</span>
           <textarea columns="10" rows="10" className="abstractField"></textarea>
-          
         </div>
         <div className="addTeamMembersDiv">
           <span className="addTeamMembers">Team Members: </span>
@@ -25,7 +24,6 @@ class AddDetails extends React.Component {
         <div className="addLinkProjectDiv">
           <span className="addLink">Link: </span>
           <input className="addLinkField" placeholder="Link"></input>
-        
         </div>
       </div>
     );

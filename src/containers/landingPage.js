@@ -11,6 +11,10 @@ class LandingPage extends React.Component {
   state = {
     signInDisplay: true,
     registerDisplay: false,
+    email: "",
+    pass: "",
+    re_pass: "",
+    isTeacher: false,
   };
   handleSignin = () => {
     this.setState({ signInDisplay: true, registerDisplay: false });
@@ -18,7 +22,56 @@ class LandingPage extends React.Component {
   handleRegister = () => {
     this.setState({ signInDisplay: false, registerDisplay: true });
   };
+  loginUser = () => {
+    const response = fetch("/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.pass,
+      }),
+    });
+  };
+  setLoginInfo = (email, pass) => {
+    this.setState(
+      {
+        email: email,
+        pass: pass,
+      },
+      () => this.loginUser()
+    );
+  };
+  registerUser = () => {
+    const response = fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.pass,
+      }),
+    });
+    // const data = response.json();
+    // console.log(data);
+  };
+  setRegisterInfo = (email, pass, isTeacher) => {
+    console.log(email + pass + isTeacher);
+    this.setState(
+      {
+        email: email,
+        pass: pass,
+        isTeacher: isTeacher,
+      },
+      () => this.registerUser()
+    );
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div className="mainDiv">
         <div className="header">
@@ -70,8 +123,12 @@ class LandingPage extends React.Component {
             />
           </div>
           <div className="signInRegisterContainerDiv">
-            {this.state.registerDisplay && <Register />}
-            {this.state.signInDisplay && <SignIn />}
+            {this.state.registerDisplay && (
+              <Register setRegisterInfo={this.setRegisterInfo} />
+            )}
+            {this.state.signInDisplay && (
+              <SignIn setLoginInfo={this.setLoginInfo} />
+            )}
           </div>
         </div>
         <div className="footer">

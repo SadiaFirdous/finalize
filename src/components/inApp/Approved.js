@@ -41,9 +41,9 @@ class Approved extends React.Component {
                     </button>
                   </div>
 
-                  <div className="declineDiv">
+                  <div className="commentDiv">
                     <button
-                      className="decline"
+                      className="commentButton"
                       onClick={
                         data.completed
                           ? () => {

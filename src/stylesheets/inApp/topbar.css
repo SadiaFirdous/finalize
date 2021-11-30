@@ -28,7 +28,6 @@
   display: flex;
   border: 0.1px solid #c0c0c0;
   outline: none;
-  border-radius: 10px;
   box-shadow: rgba(228, 228, 228, 0.2) 0px 7px 29px 0px;
 }
 .magnifyingGlass {
@@ -76,7 +75,7 @@
   align-items: center;
   border: none;
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   cursor: pointer;
   padding: 10px 15px;
 }

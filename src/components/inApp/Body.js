@@ -12,6 +12,11 @@ class Body extends React.Component {
       <div className="bodyDiv">
         <div className="headingForDiv">
           <span className="createGroupHeading">{this.props.bodyName}</span>
+          {this.props.projectDeadline && (
+            <span className="projectDeadline">
+              {"Deadline: " + this.props.projectDeadline}
+            </span>
+          )}
         </div>
         <div className="contentArea">
           {this.props.createGroupDisplay && <CreateGroup />}

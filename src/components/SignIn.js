@@ -5,19 +5,39 @@ import FacebookLogo from "../media/FacebookLogo.svg";
 import Line from "../media/Line.svg";
 import "../stylesheets/signIn.css";
 class SignIn extends React.Component {
+  state = {
+    email: "",
+    pass: "",
+  };
   render() {
     return (
       <div className="signInMainDiv">
-        <input className="emailInput" placeholder="Enter email"></input>
+        <input
+          className="emailInput"
+          placeholder="Email"
+          onChange={(e) => {
+            this.setState({ email: e.target.value });
+          }}
+        ></input>
         <input
           className="passwordInput"
           placeholder="Password"
           type="password"
+          onChange={(e) => {
+            this.setState({ pass: e.target.value });
+          }}
         ></input>
         <div className="forgotPasswordDiv">
           <Link className="forgotPasswordLink">Forgot password?</Link>
         </div>
-        <button className="signInButtonInComponent">Sign In</button>
+        <button
+          className="signInButtonInComponent"
+          onClick={() =>
+            this.props.setLoginInfo(this.state.email, this.state.pass)
+          }
+        >
+          Sign In
+        </button>
         <div className="signInContinueWithDiv">
           <img src={Line} alt="img" />
           <span className="orContinueWithText">or continue with</span>

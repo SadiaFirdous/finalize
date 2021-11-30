@@ -44,12 +44,11 @@
 .comments {
   display: flex;
   flex-direction: row;
-  border-radius: 8px;
   background-color: white;
   padding: 8px;
   cursor: pointer;
   margin-left: 16px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 8px;
 }
 .accept,
 .decline,
@@ -72,7 +71,6 @@
   font-size: 20px;
   text-align: center;
   background-color: white;
-  border-radius: 30px;
   box-shadow: rgba(153, 152, 189, 0.35) 0pc 5px 15px;
   border: none;
   color: black;

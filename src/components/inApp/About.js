@@ -12,6 +12,12 @@ class About extends React.Component {
           <span className="aboutText">About project:</span>
           <span>{this.props.groupData.aboutTheProject}</span>
         </div>
+        {this.props.isTeacher && (
+          <div className="groupLinkDiv">
+            <span className="groupLinkText">About project:</span>
+            <span>{this.props.groupData.groupLink}</span>
+          </div>
+        )}
       </div>
     );
   }

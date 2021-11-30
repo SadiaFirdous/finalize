@@ -9,6 +9,8 @@ class Dashboard extends React.Component {
       projectName: "Project Management",
       aboutTheProject: "About the project",
       people: ["A", "B", "C"],
+      projectDeadline: "25-11-2021 11:59 PM",
+      groupLink: "https://bit.ly/3MCKij",
       submittedData: [
         {
           projectName: ".ffasfsfsf",
@@ -97,7 +99,7 @@ class Dashboard extends React.Component {
   ];
   state = {
     //from db
-    isTeacher: false,
+    isTeacher: true,
     groupsActive: true,
     createGroupActive: false,
     groupInfoDisplay: false,
@@ -129,8 +131,6 @@ class Dashboard extends React.Component {
       // groupData: {},
       teamData: {},
     });
-    console.log("inHandleCreateGroup");
-    console.log(this.state);
   };
   handleGroups = () => {
     this.setState({
@@ -138,26 +138,28 @@ class Dashboard extends React.Component {
       groupsActive: true,
       createGroupActive: false,
       groupInfoDisplay: false,
+      projectDeadline: "",
     });
   };
-  handleGroupInfo = (groupName) => {
+  handleGroupInfo = (groupName, projectDeadline) => {
     this.setState({
       bodyName: groupName,
+      projectDeadline: projectDeadline,
       groupsActive: false,
       createGroupActive: false,
     });
   };
-  setGroupInfoDisplay = (bool, groupName) => {
+  setGroupInfoDisplay = (bool, groupName, projectDeadline) => {
     let newState = { ...this.state };
     newState.groupInfoDisplay = bool;
     newState.bodyName = groupName;
+    newState.projectDeadline = projectDeadline;
     newState.groupsActive = false;
     this.setState(newState);
   };
 
   //regarding body
   handleSubmissions = () => {
-    console.log("handleSubmissions");
     this.setState({
       submittedDisplay: true,
       duplicatesDisplay: false,
@@ -199,8 +201,7 @@ class Dashboard extends React.Component {
     });
   };
   openGroupInfo = (groupData) => {
-    this.handleGroupInfo(groupData.projectName);
-    console.log("inOpenGroupInfo recevied");
+    this.handleGroupInfo(groupData.projectName, groupData.projectDeadline);
     console.log(groupData);
     this.setState({
       submittedDisplay: true,
@@ -211,7 +212,11 @@ class Dashboard extends React.Component {
       addDetailsDisplay: false,
       groupData: groupData,
     });
-    this.setGroupInfoDisplay(true, groupData.projectName);
+    this.setGroupInfoDisplay(
+      true,
+      groupData.projectName,
+      groupData.projectDeadline
+    );
   };
   handleViewSubmissions = (data) => {
     this.setState({
@@ -256,6 +261,7 @@ class Dashboard extends React.Component {
             <Body
               handleGroupInfo={this.handleGroupInfo}
               bodyName={this.state.bodyName}
+              projectDeadline={this.state.projectDeadline}
               groupsDisplay={this.state.groupsActive}
               createGroupDisplay={this.state.createGroupActive}
               groupInfoDisplay={this.state.groupInfoDisplay}
