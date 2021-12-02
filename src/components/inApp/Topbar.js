@@ -17,6 +17,9 @@ class Topbar extends React.Component {
       notificationPanelDisplay: !bool,
     });
   };
+  logoutUser=()=>{
+
+  }
   render() {
     return (
       <div className="topDiv">
@@ -47,7 +50,7 @@ class Topbar extends React.Component {
 
           <img className="profilePhoto" src={User} alt="img" />
           <span className="nameText">{this.state.name}</span>
-          <button className="logoutButton">
+          <button className="logoutButton" onClick={()=>this.logoutUser()}>
             <span className="logoutText">Log Out</span>
           </button>
         </div>
