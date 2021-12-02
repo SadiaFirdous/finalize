@@ -30,14 +30,16 @@ class SignIn extends React.Component {
         <div className="forgotPasswordDiv">
           <Link className="forgotPasswordLink">Forgot password?</Link>
         </div>
-        <button
-          className="signInButtonInComponent"
-          onClick={() =>
+        <Link
+          className="signInLink"
+          to="/dashboard"
+          onClickCapture={() =>
             this.props.setLoginInfo(this.state.email, this.state.pass)
           }
         >
-          Sign In
-        </button>
+          <button className="signInButtonInComponent">Sign In</button>
+        </Link>
+
         <div className="signInContinueWithDiv">
           <img src={Line} alt="img" />
           <span className="orContinueWithText">or continue with</span>

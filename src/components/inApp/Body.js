@@ -5,7 +5,7 @@ import GroupsList from "./GroupsList";
 import GroupInfo from "./GroupInfo";
 class Body extends React.Component {
   render() {
-    console.log("from body to groupInfo ");
+    // console.log("from body to groupInfo ");
     console.log(this.props.groupData);
     console.log(this.props.submittedDisplay);
     return (

@@ -1,102 +1,36 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Sidebar from "../../components/inApp/Sidebar";
 import Topbar from "../../components/inApp/Topbar";
 import Body from "../../components/inApp/Body";
 import "../../stylesheets/inApp/dashboard.css";
 class Dashboard extends React.Component {
-  yourGroupsData = [
-    {
-      projectName: "Project Management",
-      aboutTheProject: "About the project",
-      people: ["A", "B", "C"],
-      projectDeadline: "25-11-2021 11:59 PM",
-      groupLink: "https://bit.ly/3MCKij",
-      submittedData: [
-        {
-          projectName: ".ffasfsfsf",
-          names: ["1602-19-733-106", "1602-19-733-091"],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          isApproved: false,
-          completed: false,
-          link: "https://www.google.com",
+  getData = async () => {
+    try {
+      const res = await fetch("/data", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        {
-          projectName: "helloasfhasjfshjfdsfdsgdsgdh",
-          names: [
-            "1602-19-733-106",
-            "1602-19-733-091",
-            "1602-19-733-106",
-            "1602-19-733-091",
-            "1602-19-733-106",
-          ],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          completed: true,
-          isApproved: true,
-          link: "https://www.google.com",
-        },
-        {
-          projectName: "nowayhome",
-          names: ["106", "526"],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          completed: true,
-          isApproved: true,
-          link: "https://www.google.com",
-        },
-        {
-          projectName: "tobey",
-          names: ["106", "526"],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          completed: true,
-          isApproved: true,
-          link: "https://www.google.com",
-        },
-      ],
-      duplicatesData: [
-        {
-          projectName: "a",
-          names: ["106", "91"],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          isApproved: false,
-          completed: false,
-          link: "https://www.google.com",
-        },
-        {
-          projectName: "b",
-          names: ["106", "526"],
-          abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
-          comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
-          completed: true,
-          isApproved: false,
-          link: "https://www.google.com",
-        },
-      ],
-    },
-    {
-      projectName: "asfasfasjas",
-      aboutTheProject: "About the project",
-      people: ["A", "B", "C"],
-    },
-    {
-      projectName: "bbbbbb",
-      aboutTheProject: "About the project",
-      people: ["A", "B", "C"],
-    },
-    {
-      projectName: "Proafas",
-      aboutTheProject: "About the project",
-      people: ["A", "B", "C"],
-    },
-    {
-      projectName: "noway",
-      aboutTheProject: "About the project",
-      people: ["A", "B", "C"],
-    },
-  ];
+        credentials: "include",
+      });
+      const data = await res.json();
+      // console.log("myData");
+      // console.log(data);
+      if (!res.status == 200) {
+        const err = new Error(res.err);
+        throw err;
+      }
+      return data;
+    } catch (err) {
+      // console.log(err);
+      this.props.history.push("/");
+    }
+  };
+  componentDidMount() {
+    const userData = this.getData();
+  }
   state = {
     //from db
     isTeacher: true,
@@ -114,6 +48,99 @@ class Dashboard extends React.Component {
     //groupInfo display and data
     // groupData: {},
     teamData: {},
+    yourGroupsData: [
+      {
+        projectName: "Project Management",
+        aboutTheProject: "About the project",
+        people: ["A", "B", "C"],
+        projectDeadline: "25-11-2021 11:59 PM",
+        groupLink: "https://bit.ly/3MCKij",
+        submittedData: [
+          {
+            projectName: ".ffasfsfsf",
+            names: ["1602-19-733-106", "1602-19-733-091"],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            isApproved: false,
+            completed: false,
+            link: "https://www.google.com",
+          },
+          {
+            projectName: "helloasfhasjfshjfdsfdsgdsgdh",
+            names: [
+              "1602-19-733-106",
+              "1602-19-733-091",
+              "1602-19-733-106",
+              "1602-19-733-091",
+              "1602-19-733-106",
+            ],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            completed: true,
+            isApproved: true,
+            link: "https://www.google.com",
+          },
+          {
+            projectName: "nowayhome",
+            names: ["106", "526"],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            completed: true,
+            isApproved: true,
+            link: "https://www.google.com",
+          },
+          {
+            projectName: "tobey",
+            names: ["106", "526"],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            completed: true,
+            isApproved: true,
+            link: "https://www.google.com",
+          },
+        ],
+        duplicatesData: [
+          {
+            projectName: "a",
+            names: ["106", "91"],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            isApproved: false,
+            completed: false,
+            link: "https://www.google.com",
+          },
+          {
+            projectName: "b",
+            names: ["106", "526"],
+            abstract: "askfhasfgasgfasfhashfiasfgasufgiasf",
+            comments: ["kfdsjfsdgjdskjklgjlkgsdjkgjsdkgjkdsjkdsjkgj"],
+            completed: true,
+            isApproved: false,
+            link: "https://www.google.com",
+          },
+        ],
+      },
+      {
+        projectName: "asfasfasjas",
+        aboutTheProject: "About the project",
+        people: ["A", "B", "C"],
+      },
+      {
+        projectName: "bbbbbb",
+        aboutTheProject: "About the project",
+        people: ["A", "B", "C"],
+      },
+      {
+        projectName: "Proafas",
+        aboutTheProject: "About the project",
+        people: ["A", "B", "C"],
+      },
+      {
+        projectName: "noway",
+        aboutTheProject: "About the project",
+        people: ["A", "B", "C"],
+      },
+    ],
   };
   handleCreateGroup = () => {
     this.setState({
@@ -244,8 +271,8 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log("sending from dashboard");
-    console.log(this.state);
+    // console.log("sending from dashboard");
+    // console.log(this.state);
     return (
       <div className="dashboardMainDiv">
         <Sidebar
@@ -276,7 +303,7 @@ class Dashboard extends React.Component {
               //groupInfo display and data
               groupData={this.state.groupData}
               teamData={this.state.teamData}
-              yourGroupsData={this.yourGroupsData}
+              yourGroupsData={this.state.yourGroupsData}
               handleSubmissions={this.handleSubmissions}
               handleDuplicates={this.handleDuplicates}
               handleApproved={this.handleApproved}
