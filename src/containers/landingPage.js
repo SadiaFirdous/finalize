@@ -7,6 +7,8 @@ import TwitterLogo from "../media/TwitterLogo.svg";
 import WhatsappLogo from "../media/WhatsappLogo.svg";
 import Register from "../components/Register";
 import SignIn from "../components/SignIn";
+import { Redirect } from "react-router";
+
 class LandingPage extends React.Component {
   state = {
     signInDisplay: true,
@@ -22,8 +24,8 @@ class LandingPage extends React.Component {
   handleRegister = () => {
     this.setState({ signInDisplay: false, registerDisplay: true });
   };
-  loginUser = () => {
-    const response = fetch("/login", {
+  loginUser = async () => {
+    const response = await fetch("/login", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -33,7 +35,7 @@ class LandingPage extends React.Component {
         email: this.state.email,
         password: this.state.pass,
       }),
-    });
+    }).then( res=> window.open("http://localhost:3000/dashboard","_top"));
   };
   setLoginInfo = (email, pass) => {
     this.setState(
