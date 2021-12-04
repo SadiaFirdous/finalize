@@ -7,7 +7,6 @@ import TwitterLogo from "../media/TwitterLogo.svg";
 import WhatsappLogo from "../media/WhatsappLogo.svg";
 import Register from "../components/Register";
 import SignIn from "../components/SignIn";
-import { Redirect } from "react-router";
 
 class LandingPage extends React.Component {
   state = {
@@ -35,7 +34,7 @@ class LandingPage extends React.Component {
         email: this.state.email,
         password: this.state.pass,
       }),
-    }).then( res=> window.open("http://localhost:3000/dashboard","_top"));
+    }).then((res) => window.open("http://localhost:3000/dashboard", "_top"));
   };
   setLoginInfo = (email, pass) => {
     this.setState(
@@ -55,6 +54,7 @@ class LandingPage extends React.Component {
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.pass,
+        isTeacher: this.state.isTeacher,
       }),
     });
     // const data = response.json();

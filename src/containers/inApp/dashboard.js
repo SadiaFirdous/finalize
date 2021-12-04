@@ -5,6 +5,7 @@ import Topbar from "../../components/inApp/Topbar";
 import Body from "../../components/inApp/Body";
 import "../../stylesheets/inApp/dashboard.css";
 class Dashboard extends React.Component {
+  userData = {};
   getData = async () => {
     try {
       const res = await fetch("/data", {
@@ -28,8 +29,31 @@ class Dashboard extends React.Component {
       this.props.history.push("/");
     }
   };
+  getGroups = async () => {
+    try {
+      const res = await fetch("/displaygroups", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      console.log("GROUPS DATA");
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   componentDidMount() {
-    const userData = this.getData();
+    this.getData().then((res) => {
+      this.setState({
+        isTeacher: res.isTeacher,
+      });
+    });
+    this.getGroups();
   }
   state = {
     //from db

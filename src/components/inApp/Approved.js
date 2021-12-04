@@ -8,58 +8,60 @@ class Approved extends React.Component {
       <div className="approvedMainDiv">
         {this.props.Data.map((data) => {
           return (
-            <div className="listProjects" key={this.props.Data.indexOf(data)}>
-              <div className="leftDiv">
-                <div className="projectNameDiv">
-                  <span className="projectTitle">{data.projectName}</span>
+            data.isApproved && (
+              <div className="listProjects" key={this.props.Data.indexOf(data)}>
+                <div className="leftDiv">
+                  <div className="projectNameDiv">
+                    <span className="projectTitle">{data.projectName}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="rightDiv">
-                <div className="rollNumbersDiv">
-                  <span className="rollnumbers">
-                    {data.names[0] + " " + data.names[1]}
-                  </span>
-                </div>
+                <div className="rightDiv">
+                  <div className="rollNumbersDiv">
+                    {data.names.map((roll) => {
+                      return <span className="rollnumbers">{roll}</span>;
+                    })}
+                  </div>
 
-                <div className="options">
-                  <div
-                    className={
-                      data.completed ? "green buttonDiv" : "blue buttonDiv"
-                    }
-                  >
-                    <img
-                      className="statusLogo"
-                      src={data.completed ? WhiteTick : LoadingWhite}
-                      alt="img"
-                    />
-                    <button
+                  <div className="options">
+                    <div
                       className={
-                        data.completed ? "green button" : "blue button"
+                        data.completed ? "green buttonDiv" : "blue buttonDiv"
                       }
                     >
-                      {data.completed ? "Completed" : "In Progress"}
-                    </button>
-                  </div>
+                      <img
+                        className="statusLogo"
+                        src={data.completed ? WhiteTick : LoadingWhite}
+                        alt="img"
+                      />
+                      <button
+                        className={
+                          data.completed ? "green button" : "blue button"
+                        }
+                      >
+                        {data.completed ? "Completed" : "In Progress"}
+                      </button>
+                    </div>
 
-                  <div className="commentDiv">
-                    <button
-                      className="commentButton"
-                      onClick={
-                        data.completed
-                          ? () => {
-                              this.props.handleViewSubmissions(data);
-                            }
-                          : () => {
-                              this.props.handleComments();
-                            }
-                      }
-                    >
-                      {data.completed ? "View Submission" : "Comment"}
-                    </button>
+                    <div className="commentDiv">
+                      <button
+                        className="commentButton"
+                        onClick={
+                          data.completed
+                            ? () => {
+                                this.props.handleViewSubmissions(data);
+                              }
+                            : () => {
+                                this.props.handleComments();
+                              }
+                        }
+                      >
+                        {data.completed ? "View Submission" : "Comment"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )
           );
         })}
       </div>

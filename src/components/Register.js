@@ -25,6 +25,15 @@ class Register extends React.Component {
             this.state.isTeacher
           );
         });
+      } else {
+        this.setState({ isTeacher: false }, () => {
+          console.log("sending info to landingPage");
+          this.props.setRegisterInfo(
+            this.state.email,
+            this.state.pass,
+            this.state.isTeacher
+          );
+        });
       }
     }
   };

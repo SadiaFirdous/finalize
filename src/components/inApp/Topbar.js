@@ -17,9 +17,18 @@ class Topbar extends React.Component {
       notificationPanelDisplay: !bool,
     });
   };
-  logoutUser=()=>{
-
-  }
+  logoutUser = async () => {
+    await fetch("/logout", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((res) => window.open("http://localhost:3000", "_top"))
+      .catch((err) => console.log(err));
+  };
   render() {
     return (
       <div className="topDiv">
@@ -50,7 +59,7 @@ class Topbar extends React.Component {
 
           <img className="profilePhoto" src={User} alt="img" />
           <span className="nameText">{this.state.name}</span>
-          <button className="logoutButton" onClick={()=>this.logoutUser()}>
+          <button className="logoutButton" onClick={() => this.logoutUser()}>
             <span className="logoutText">Log Out</span>
           </button>
         </div>
