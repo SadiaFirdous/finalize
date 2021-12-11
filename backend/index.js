@@ -111,7 +111,56 @@ app.post("/invite", authenticate, async (req, res) => {
   );
   res.status(200).send();
 });
-app.post("/addstudentproject", authenticate, async (req, res) => {});
+app.post("/addstudentproject", authenticate, async (req, res) => {
+  console.log("RECEIVED FROM CLIENT");
+  console.log(req.body);
+  await ProjectModel.findOneAndUpdate(
+    { _id: ObjectId(req.body._id) },
+    {
+      $push: {
+        submittedData: {
+          email: req.body.email,
+          projectTitle: req.body.projectTitle,
+          abstract: req.body.abstract,
+          teamMem1: req.body.teamMem1,
+          teamMem2: req.body.teamMem2,
+          teamMem3: req.body.teamMem3,
+          teamMem4: req.body.teamMem4,
+          projectLink: req.body.projectLink,
+          didAdd: true,
+          isApproved: false,
+          completed: false,
+        },
+      },
+    }
+  ).then(console.log("update successful"));
+  res.status(200).send();
+});
+app.post("/updatestudentproject", authenticate, async (req, res) => {
+  await ProjectModel.updateOne(
+    {
+      _id: ObjectId(req.body._id),
+      "submittedData.email": { $eq: req.body.email },
+    },
+    {
+      $set: {
+        submittedData: {
+          email: req.body.email,
+          projectTitle: req.body.projectTitle,
+          abstract: req.body.abstract,
+          teamMem1: req.body.teamMem1,
+          teamMem2: req.body.teamMem2,
+          teamMem3: req.body.teamMem3,
+          teamMem4: req.body.teamMem4,
+          projectLink: req.body.projectLink,
+          didAdd: true,
+          isApproved: false,
+          completed: false,
+        },
+      },
+    }
+  );
+});
 app.post("/deletegroup", authenticate, async (req, res) => {
   console.log("GROUP ID RECEIVED");
   console.log(req.body._id);

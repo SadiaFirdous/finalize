@@ -13,7 +13,7 @@
 }
 
 .abstractField {
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 90px;
   height: 150px;
   width: 60%;
@@ -24,7 +24,7 @@
 }
 .aboutProjectField {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  font-size: 20px;
+  font-size: 18px;
   width: 60%;
   height: 40px;
   margin-left: 50px;
@@ -41,7 +41,8 @@
 .membersField4 {
   padding: 9px;
   width: 15%;
-  text-align: center;
+  font-size: 18px;
+
   background-color: white;
   box-shadow: rgba(153, 152, 189, 0.35) 0pc 5px 15px;
   border: none;
@@ -49,10 +50,9 @@
 }
 .addLinkField {
   padding: 6px;
-  font-size: 20px;
-  text-align: center;
+  font-size: 18px;
   background-color: white;
-
+  padding: 10px;
   box-shadow: rgba(153, 152, 189, 0.35) 0pc 5px 15px;
   border: none;
   width: 40%;
@@ -64,11 +64,12 @@
 .addLink {
   font-weight: bold;
 }
-.addButtonDiv {
+.buttonsDiv {
   display: flex;
   justify-content: center;
 }
-.addButton {
+.saveButton,
+.submitButton {
   margin-top: 50px;
   width: 8%;
   padding: 10px 5px;
@@ -78,4 +79,7 @@
   border: none;
   color: white;
   cursor: pointer;
+}
+.submitButton {
+  margin-left: 2%;
 }
