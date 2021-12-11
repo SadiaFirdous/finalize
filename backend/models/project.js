@@ -9,6 +9,7 @@ const ProjectSchema = new mongoose.Schema(
     submittedData: { type: Array, default: [], required: false },
   },
   { collection: "Projects" }
+  //change to projects group
 );
 
 const Project = mongoose.model("Project", ProjectSchema);

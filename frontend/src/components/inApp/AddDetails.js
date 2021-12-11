@@ -10,6 +10,26 @@ class AddDetails extends React.Component {
     teamMem4: "",
     projectLink: "",
   };
+  addEachStudentProject = async () => {
+    const p = await fetch("/addstudentproject", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        projectTitle: this.state.projectTitle,
+        abstract: this.state.abstract,
+        teamMem1: this.state.teamMem1,
+        teamMem2: this.state.teamMem2,
+        teamMem3: this.state.teamMem3,
+        teamMem4: this.state.teamMem4,
+        projectLink: this.state.projectLink,
+      }),
+    }).then(window.open("http://localhost:3000/dashboard", "_top"));
+  };
+
   render() {
     return (
       <div className="addMainDiv">
@@ -73,7 +93,12 @@ class AddDetails extends React.Component {
           ></input>
         </div>
         <div className="addButtonDiv">
-          <button className="addButton">Add</button>
+          <button
+            className="addButton"
+            onClick={() => this.addEachStudentProject()}
+          >
+            Add
+          </button>
         </div>
       </div>
     );

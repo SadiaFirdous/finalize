@@ -60,6 +60,7 @@ class Dashboard extends React.Component {
       this.setState({
         yourGroupsData: res,
       });
+      console.log("PRINTING YOUR GROUPS DATA");
       console.log(this.state.yourGroupsData);
     });
   }
@@ -192,6 +193,7 @@ class Dashboard extends React.Component {
     });
   };
   handleGroups = () => {
+    window.location.reload();
     this.setState({
       bodyName: "YOUR GROUPS",
       groupsActive: true,

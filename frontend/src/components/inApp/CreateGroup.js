@@ -60,14 +60,7 @@ class CreateGroup extends React.Component {
             }}
           ></input>
         </div>
-        <div className="linkDiv">
-          <span className="linkText">
-            Share the below link for people to join:
-          </span>
-          <text className="linkField" placeholder="Link">
-            http://bit.ly/245cK
-          </text>
-        </div>
+
         <div className="saveButtonDiv">
           <button className="saveButton" onClick={this.createNewGroup}>
             Save

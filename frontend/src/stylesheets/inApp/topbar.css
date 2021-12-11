@@ -10,10 +10,10 @@
   align-items: center;
   margin-left: 1%;
 }
-.arrow {
+/* .arrow {
   margin-right: 6px;
   width: 40px;
-}
+} */
 .searchBar {
   border-radius: 9px;
   width: 450px;
@@ -30,9 +30,20 @@
   outline: none;
   box-shadow: rgba(228, 228, 228, 0.2) 0px 7px 29px 0px;
 }
-.magnifyingGlass {
-  margin-left: 20px;
+.joinButton {
+  margin-left: 1%;
+  width: 80px;
+  padding: 11px 6px;
+  font-size: 20px;
+  background-color: #2664ec;
+  box-shadow: rgba(69, 97, 241, 0.35) 0pc 5px 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
+/* .magnifyingGlass {
+  margin-left: 20px;
+} */
 .iconsDiv {
   display: flex;
   align-items: center;

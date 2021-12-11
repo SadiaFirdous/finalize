@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const UserModel = require("./models/user");
 const ProjectModel = require("./models/project");
 const authenticate = require("./middleware/authenticate");
+const ObjectId = require("mongodb").ObjectId;
 require("dotenv").config();
 mongoose.connect(
   "mongodb+srv://dbms_finalize:finalize123@cluster0.5ndw9.mongodb.net/Finalize?retryWrites=true&w=majority",
@@ -106,8 +107,25 @@ app.post("/invite", authenticate, async (req, res) => {
   console.log("IN INVITE API");
   const user = await UserModel.findOneAndUpdate(
     { _id: req.rootUser.id },
-    { $push: { data: req.body.groupId } }
+    { $push: { data: ObjectId(req.body.groupId) } }
   );
+  res.status(200).send();
+});
+app.post("/addstudentproject", authenticate, async (req, res) => {});
+app.post("/deletegroup", authenticate, async (req, res) => {
+  console.log("GROUP ID RECEIVED");
+  console.log(req.body._id);
+  (await UserModel.find()).forEach(async (doc) => {
+    await UserModel.updateOne(
+      { _id: doc._id },
+      { $pull: { data: ObjectId(req.body._id) } }
+    ).then(console.log("deleted one record"));
+  });
+
+  await ProjectModel.deleteOne({ _id: ObjectId(req.body._id) }).then(
+    console.log("deleted from projects")
+  );
+
   res.status(200).send();
 });
 app.listen(3001, () => {

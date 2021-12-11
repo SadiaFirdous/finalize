@@ -19,7 +19,12 @@ function App() {
         />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/Topbar" component={Topbar} />
-        <Route exact path="/invite/:groupid" component={InvitePage} />
+        <Route
+          exact
+          path="/invite/:groupid"
+          component={InvitePage}
+          history={history}
+        />
       </BrowserRouter>
     </div>
   );

@@ -17,6 +17,21 @@ class EachGroupCard extends React.Component {
   //     this.state.count = len - 2;
   //   }
   // };
+  deleteGroup = async (_id) => {
+    const response = await fetch("/deletegroup", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: _id,
+      }),
+    }).then((res) => {
+      window.open("http://localhost:3000/dashboard", "_top");
+      // console.log("CLIENT: DELTED ");
+    });
+  };
 
   render() {
     // this.evaluatePeople();
@@ -49,9 +64,12 @@ class EachGroupCard extends React.Component {
               src={DeleteIcon}
               alt="img"
               onClick={() => {
-                alert(
-                  `Are you sure you want delete ${this.props.groupData.projectName} ?`
+                var r = window.confirm(
+                  `Are you sure you want delete ${this.props.groupData.projectTitle} ?`
                 );
+                if (r == true) {
+                  this.deleteGroup(this.props.groupData._id);
+                }
               }}
             />
             <img className="cardSettingsIcon" src={CardSettings} alt="img" />
