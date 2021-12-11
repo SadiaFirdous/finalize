@@ -34,7 +34,9 @@ class LandingPage extends React.Component {
         email: this.state.email,
         password: this.state.pass,
       }),
-    }).then((res) => window.open("http://localhost:3000/dashboard", "_top"));
+    }).then((res) => {
+      window.open("http://localhost:3000/dashboard", "_top");
+    });
   };
   setLoginInfo = (email, pass) => {
     this.setState(

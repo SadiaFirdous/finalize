@@ -9,6 +9,7 @@ class Topbar extends React.Component {
   state = {
     name: "Sadia Firdous",
     notificationPanelDisplay: false,
+    inviteUrl: "",
   };
   handleNotificationDisplay = () => {
     let bool = this.state.notificationPanelDisplay;
@@ -29,18 +30,29 @@ class Topbar extends React.Component {
       .then((res) => window.open("http://localhost:3000", "_top"))
       .catch((err) => console.log(err));
   };
+  sendToInviteLink = () => {
+    window.location = this.state.inviteUrl;
+  };
   render() {
     return (
       <div className="topDiv">
         <div className="searchWithArrowDiv">
-          <img className="arrow" src={Arrow} alt="img" />
           <div className="searchBoxDiv">
-            <img className="magnifyingGlass" src={MagnifyingGlass} alt="img" />
             <input
               className="searchBar"
-              placeholder="Search anything..."
+              placeholder="Have group link?"
+              type="url"
+              onChange={(e) => {
+                this.setState({ inviteUrl: e.target.value });
+              }}
             ></input>
           </div>
+          <button
+            className="joinButton"
+            onClick={() => this.sendToInviteLink()}
+          >
+            Join
+          </button>
         </div>
         <div className="iconsDiv">
           <img
