@@ -8,6 +8,51 @@ import AddDetails from "./AddDetails";
 class GroupInfo extends React.Component {
   computeApprovedData = () => {};
 
+  state = {
+    didAdd: false,
+    userDetails: {},
+    myTeamDetails: {}, //details of the users team project
+  };
+  getUserDetails = async () => {
+    try {
+      const res = await fetch("/data", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      // console.log("CURRENT USER DETAILS");
+      // console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  componentDidMount() {
+    this.getUserDetails()
+      .then((res) => {
+        this.setState({
+          userDetails: res,
+        });
+      })
+      .then(() => {
+        for (var i = 0; i < this.props.groupData.submittedData.length; i++) {
+          if (
+            this.props.groupData.submittedData[i].email ===
+            this.state.userDetails.email
+          ) {
+            this.setState({
+              myTeamDetails: this.props.groupData.submittedData[i],
+            });
+          }
+        }
+        console.log(this.state.myTeamDetails);
+      });
+  }
+
   render() {
     // console.log(this.props.isTeacher);
     console.log("in groupInfo");
@@ -69,7 +114,9 @@ class GroupInfo extends React.Component {
                 }
                 onClick={this.props.handleAddDetails}
               >
-                Add details
+                {this.state.myTeamDetails.didAdd
+                  ? "Edit details"
+                  : "Add details"}
               </button>
             </div>
           )}
@@ -112,7 +159,12 @@ class GroupInfo extends React.Component {
           {this.props.viewSubmissionDisplay && (
             <ViewSubmissions teamData={this.props.teamData} />
           )}
-          {this.props.addDetailsDisplay && <AddDetails />}
+          {this.props.addDetailsDisplay && (
+            <AddDetails
+              groupData={this.props.groupData}
+              myTeamDetails={this.state.myTeamDetails}
+            />
+          )}
         </div>
       </div>
     );
