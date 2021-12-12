@@ -12,14 +12,15 @@ class Approved extends React.Component {
               <div className="listProjects" key={this.props.Data.indexOf(data)}>
                 <div className="leftDiv">
                   <div className="projectNameDiv">
-                    <span className="projectTitle">{data.projectName}</span>
+                    <span className="projectTitle">{data.projectTitle}</span>
                   </div>
                 </div>
                 <div className="rightDiv">
                   <div className="rollNumbersDiv">
-                    {data.names.map((roll) => {
-                      return <span className="rollnumbers">{roll}</span>;
-                    })}
+                    <span className="rollnumbers">{data.teamMem1 + "\n"}</span>
+                    <span className="rollnumbers">{data.teamMem2 + "\n"}</span>
+                    <span className="rollnumbers">{data.teamMem3 + "\n"}</span>
+                    <span className="rollnumbers">{data.teamMem4 + "\n"}</span>
                   </div>
 
                   <div className="options">

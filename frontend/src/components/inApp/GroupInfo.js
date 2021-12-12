@@ -67,10 +67,7 @@ class GroupInfo extends React.Component {
                 this.props.submittedDisplay ? "submitted active" : "submitted"
               }
             >
-              {"Submitted " +
-                "(" +
-                this.props.groupData.submittedData.length +
-                ")"}
+              {"Submitted"}
             </button>
             <button
               onClick={this.props.handleDuplicates}
@@ -78,24 +75,17 @@ class GroupInfo extends React.Component {
                 this.props.duplicatesDisplay ? "duplicates active" : "submitted"
               }
             >
-              {"Duplicates " +
-                "(" +
-                this.props.groupData.submittedData.length +
-                ")"}
+              {"Duplicates"}
             </button>
-            {this.props.isTeacher && (
-              <button
-                onClick={this.props.handleApproved}
-                className={
-                  this.props.approvedDisplay ? "approved active" : "approved"
-                }
-              >
-                {"Approved " +
-                  "(" +
-                  this.props.groupData.submittedData.length +
-                  ")"}
-              </button>
-            )}
+
+            <button
+              onClick={this.props.handleApproved}
+              className={
+                this.props.approvedDisplay ? "approved active" : "approved"
+              }
+            >
+              {"Approved"}
+            </button>
 
             <button
               onClick={this.props.handleAbout}
@@ -132,12 +122,15 @@ class GroupInfo extends React.Component {
             <SubmittedAndDuplicates
               isTeacher={this.props.isTeacher}
               //send duplicates data afterwards
+
               Data={this.props.groupData.submittedData}
             />
           )}
           {this.props.submittedDisplay && (
             <SubmittedAndDuplicates
               isTeacher={this.props.isTeacher}
+              flag={false}
+              groupData={this.props.groupData}
               Data={this.props.groupData.submittedData}
             />
           )}
@@ -146,8 +139,8 @@ class GroupInfo extends React.Component {
             <Approved
               isTeacher={this.props.isTeacher}
               Data={this.props.groupData.submittedData}
+              flag={true}
               handleViewSubmissions={this.props.handleViewSubmissions}
-              handleComments={this.props.handleComments}
             />
           )}
           {this.props.aboutDisplay && (

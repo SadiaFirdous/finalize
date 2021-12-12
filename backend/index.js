@@ -8,6 +8,7 @@ const UserModel = require("./models/user");
 const ProjectModel = require("./models/project");
 const authenticate = require("./middleware/authenticate");
 const ObjectId = require("mongodb").ObjectId;
+const secrets = require("./secret");
 require("dotenv").config();
 mongoose.connect(
   "mongodb+srv://dbms_finalize:finalize123@cluster0.5ndw9.mongodb.net/Finalize?retryWrites=true&w=majority",
@@ -41,7 +42,7 @@ app.post("/register", async (req, res) => {
   }
 });
 app.post("/login", async (req, res) => {
-  console.log("hi");
+  console.log("SECRET  :" + secrets.pass);
   const user = await UserModel.findOne({ email: req.body.email });
   const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
   console.log(token);
@@ -137,29 +138,56 @@ app.post("/addstudentproject", authenticate, async (req, res) => {
   res.status(200).send();
 });
 app.post("/updatestudentproject", authenticate, async (req, res) => {
-  await ProjectModel.updateOne(
-    {
-      _id: ObjectId(req.body._id),
-      "submittedData.email": { $eq: req.body.email },
-    },
-    {
-      $set: {
-        submittedData: {
-          email: req.body.email,
-          projectTitle: req.body.projectTitle,
-          abstract: req.body.abstract,
-          teamMem1: req.body.teamMem1,
-          teamMem2: req.body.teamMem2,
-          teamMem3: req.body.teamMem3,
-          teamMem4: req.body.teamMem4,
-          projectLink: req.body.projectLink,
-          didAdd: true,
-          isApproved: false,
-          completed: false,
-        },
+  if (req.body.isEditDetails) {
+    await ProjectModel.updateOne(
+      {
+        _id: ObjectId(req.body._id),
+        "submittedData.email": { $eq: req.body.email },
       },
-    }
-  );
+      {
+        $set: {
+          "submittedData.$": {
+            email: req.body.email,
+            projectTitle: req.body.projectTitle,
+            abstract: req.body.abstract,
+            teamMem1: req.body.teamMem1,
+            teamMem2: req.body.teamMem2,
+            teamMem3: req.body.teamMem3,
+            teamMem4: req.body.teamMem4,
+            projectLink: req.body.projectLink,
+            didAdd: true,
+            isApproved: false,
+            completed: false,
+          },
+        },
+      }
+    );
+  } else {
+    await ProjectModel.updateOne(
+      {
+        _id: ObjectId(req.body._id),
+        "submittedData.email": { $eq: req.body.email },
+      },
+      {
+        $set: {
+          "submittedData.$": {
+            email: req.body.email,
+            projectTitle: req.body.projectTitle,
+            abstract: req.body.abstract,
+            teamMem1: req.body.teamMem1,
+            teamMem2: req.body.teamMem2,
+            teamMem3: req.body.teamMem3,
+            teamMem4: req.body.teamMem4,
+            projectLink: req.body.projectLink,
+            didAdd: true,
+            isApproved: true,
+            completed: false,
+          },
+        },
+      }
+    );
+  }
+  res.status(200).send();
 });
 app.post("/deletegroup", authenticate, async (req, res) => {
   console.log("GROUP ID RECEIVED");

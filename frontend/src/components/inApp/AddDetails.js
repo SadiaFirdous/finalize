@@ -15,6 +15,7 @@ class AddDetails extends React.Component {
     isApproved: false,
     completed: false,
   };
+
   getUserDetails = async () => {
     try {
       const res = await fetch("/data", {
@@ -64,6 +65,7 @@ class AddDetails extends React.Component {
               didAdd: true,
               isApproved: false,
               completed: false,
+              isEditDetails: true,
             }),
           }).then(window.open("http://localhost:3000/dashboard", "_top"));
         } else {
@@ -98,6 +100,9 @@ class AddDetails extends React.Component {
       return;
     }
   };
+  componentDidMount() {
+    this.setState(this.props.myTeamDetails);
+  }
 
   render() {
     return (
@@ -175,12 +180,14 @@ class AddDetails extends React.Component {
           >
             Save
           </button>
-          <button
-            className="submitButton"
-            onClick={() => this.checkForSubmission()}
-          >
-            Submit
-          </button>
+          {this.props.myTeamDetails.isApproved && (
+            <button
+              className="submitButton"
+              onClick={() => this.checkForSubmission()}
+            >
+              Submit
+            </button>
+          )}
         </div>
       </div>
     );
