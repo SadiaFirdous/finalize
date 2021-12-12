@@ -8,7 +8,7 @@ const UserModel = require("./models/user");
 const ProjectModel = require("./models/project");
 const authenticate = require("./middleware/authenticate");
 const ObjectId = require("mongodb").ObjectId;
-const secrets = require("./secret");
+const secrets = require("./secret/secret");
 require("dotenv").config();
 mongoose.connect(
   "mongodb+srv://dbms_finalize:finalize123@cluster0.5ndw9.mongodb.net/Finalize?retryWrites=true&w=majority",
