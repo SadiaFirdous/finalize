@@ -14,6 +14,7 @@ class AddDetails extends React.Component {
     didAdd: true,
     isApproved: false,
     completed: false,
+    submitButtonEnabled: true,
   };
 
   getUserDetails = async () => {
@@ -94,11 +95,36 @@ class AddDetails extends React.Component {
         }
       });
   };
-  checkForSubmission = () => {
+  checkForSubmission = async () => {
     if (!validator.isURL(this.state.projectLink)) {
       alert("Please provide a valid Project Link");
       return;
     }
+    const p = await fetch("/submitproject", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        _id: this.props.groupData._id, //because to add into that particular group
+        email: this.state.email,
+        projectTitle: this.state.projectTitle,
+        abstract: this.state.abstract,
+        teamMem1: this.state.teamMem1,
+        teamMem2: this.state.teamMem2,
+        teamMem3: this.state.teamMem3,
+        teamMem4: this.state.teamMem4,
+        projectLink: this.state.projectLink,
+        didAdd: true,
+        isApproved: true,
+        completed: true,
+      }),
+    }).then(window.open("http://localhost:3000/dashboard", "_top"));
+  };
+  disableSubmitButton = () => {
+    this.setState({ submitButtonEnabled: false });
   };
   componentDidMount() {
     this.setState(this.props.myTeamDetails);
@@ -113,6 +139,7 @@ class AddDetails extends React.Component {
             className="aboutProjectField"
             defaultValue={this.props.myTeamDetails.projectTitle}
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ projectTitle: e.target.value });
             }}
           ></input>
@@ -125,6 +152,7 @@ class AddDetails extends React.Component {
             rows="10"
             className="abstractField"
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ abstract: e.target.value });
             }}
             defaultValue={this.props.myTeamDetails.abstract}
@@ -135,6 +163,7 @@ class AddDetails extends React.Component {
           <input
             className="membersField1"
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ teamMem1: e.target.value });
             }}
             defaultValue={this.props.myTeamDetails.teamMem1}
@@ -142,6 +171,7 @@ class AddDetails extends React.Component {
           <input
             className="membersField2"
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ teamMem2: e.target.value });
             }}
             defaultValue={this.props.myTeamDetails.teamMem2}
@@ -149,6 +179,7 @@ class AddDetails extends React.Component {
           <input
             className="membersField3"
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ teamMem3: e.target.value });
             }}
             defaultValue={this.props.myTeamDetails.teamMem3}
@@ -156,6 +187,7 @@ class AddDetails extends React.Component {
           <input
             className="membersField4"
             onChange={(e) => {
+              this.disableSubmitButton();
               this.setState({ teamMem4: e.target.value });
             }}
             defaultValue={this.props.myTeamDetails.teamMem4}
@@ -180,14 +212,15 @@ class AddDetails extends React.Component {
           >
             Save
           </button>
-          {this.props.myTeamDetails.isApproved && (
-            <button
-              className="submitButton"
-              onClick={() => this.checkForSubmission()}
-            >
-              Submit
-            </button>
-          )}
+          {this.state.submitButtonEnabled &&
+            this.props.myTeamDetails.isApproved && (
+              <button
+                className="submitButton"
+                onClick={() => this.checkForSubmission()}
+              >
+                Submit
+              </button>
+            )}
         </div>
       </div>
     );
