@@ -69,14 +69,14 @@ class GroupInfo extends React.Component {
             >
               {"Submitted"}
             </button>
-            <button
+            {/* <button
               onClick={this.props.handleDuplicates}
               className={
                 this.props.duplicatesDisplay ? "duplicates active" : "submitted"
               }
             >
               {"Duplicates"}
-            </button>
+            </button> */}
 
             <button
               onClick={this.props.handleApproved}
@@ -112,20 +112,20 @@ class GroupInfo extends React.Component {
           )}
         </div>
         <div className="listDiv">
-          {this.props.duplicatesDisplay && this.props.isTeacher && (
+          {/* {this.props.duplicatesDisplay && this.props.isTeacher && (
             <div className="notifyButtonDiv">
               <button className="notifyAllButton">Notify All</button>
             </div>
-          )}
+          )} */}
 
-          {this.props.duplicatesDisplay && (
+          {/* {this.props.duplicatesDisplay && (
             <SubmittedAndDuplicates
               isTeacher={this.props.isTeacher}
               //send duplicates data afterwards
 
               Data={this.props.groupData.submittedData}
             />
-          )}
+          )} */}
           {this.props.submittedDisplay && (
             <SubmittedAndDuplicates
               isTeacher={this.props.isTeacher}

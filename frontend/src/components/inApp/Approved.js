@@ -43,22 +43,18 @@ class Approved extends React.Component {
                       </button>
                     </div>
 
-                    <div className="commentDiv">
-                      <button
-                        className="commentButton"
-                        onClick={
-                          data.completed
-                            ? () => {
-                                this.props.handleViewSubmissions(data);
-                              }
-                            : () => {
-                                this.props.handleComments();
-                              }
-                        }
-                      >
-                        {data.completed ? "View Submission" : "Comment"}
-                      </button>
-                    </div>
+                    {data.completed && (
+                      <div className="commentDiv">
+                        <button
+                          className="commentButton"
+                          onClick={() => {
+                            this.props.handleViewSubmissions(data);
+                          }}
+                        >
+                          {"View Submission"}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
