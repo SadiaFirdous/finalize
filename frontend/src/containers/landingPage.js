@@ -65,7 +65,7 @@ class LandingPage extends React.Component {
     // console.log(data);
   };
   setRegisterInfo = (name, email, pass, isTeacher) => {
-    console.log(email + pass + isTeacher);
+    // console.log(email + pass + isTeacher);
     this.setState(
       {
         name: name,
@@ -78,7 +78,7 @@ class LandingPage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="mainDiv">
         <div className="header">

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Line from "../media/Line.svg";
-import GoogleLogo from "../media/GoogleLogo.svg";
-import FacebookLogo from "../media/FacebookLogo.svg";
+// import GoogleLogo from "../media/GoogleLogo.svg";
+// import FacebookLogo from "../media/FacebookLogo.svg";
 import "../stylesheets/register.css";
 class Register extends React.Component {
   state = {
@@ -13,13 +12,13 @@ class Register extends React.Component {
     isTeacher: false,
   };
   verifyPass = () => {
-    console.log("inVerifyPass");
+    // console.log("inVerifyPass");
     if (this.state.pass != this.state.re_pass) {
-      console.log("Not equal");
+      // console.log("Not equal");
     } else {
       if (this.state.role == "Teacher") {
         this.setState({ isTeacher: true }, () => {
-          console.log("sending info to landingPage");
+          // console.log("sending info to landingPage");
           this.props.setRegisterInfo(
             this.state.name,
             this.state.email,
@@ -29,7 +28,7 @@ class Register extends React.Component {
         });
       } else {
         this.setState({ isTeacher: false }, () => {
-          console.log("sending info to landingPage");
+          // console.log("sending info to landingPage");
           this.props.setRegisterInfo(
             this.state.name,
             this.state.email,
@@ -96,10 +95,10 @@ class Register extends React.Component {
           <span className="orContinueWithText">or continue with</span>
           <img src={Line} alt="img" />
         </div>
-        <div className="registerWithSocials">
+        {/* <div className="registerWithSocials">
           <img className="googleLogoRegister" src={GoogleLogo} alt="img" />
           <img className="facebookLogoRegister" src={FacebookLogo} alt="img" />
-        </div>
+        </div> */}
       </div>
     );
   }

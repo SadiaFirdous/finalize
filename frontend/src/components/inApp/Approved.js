@@ -22,6 +22,9 @@ class Approved extends React.Component {
                     <span className="rollnumbers">{data.teamMem3 + "\n"}</span>
                     <span className="rollnumbers">{data.teamMem4 + "\n"}</span>
                   </div>
+                  <div className="abstractDiv">
+                    <span>{data.abstract}</span>
+                  </div>
 
                   <div className="options">
                     <div

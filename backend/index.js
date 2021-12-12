@@ -266,7 +266,7 @@ app.post("/rejectproject", authenticate, async (req, res) => {
       from: "managemyworkhere@gmail.com",
       to: req.body.email, //change afterwards
       subject: req.body.projectTitle,
-      text: "Your project is rejected. Enjoy",
+      text: "Your project is rejected. Please change the project title",
     };
     transporter.sendMail(mailOptions, (err, info) => {
       console.log(err);
@@ -290,6 +290,6 @@ app.post("/deletegroup", authenticate, async (req, res) => {
 
   res.status(200).send();
 });
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server started");
 });

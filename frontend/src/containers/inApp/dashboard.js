@@ -40,11 +40,11 @@ class Dashboard extends React.Component {
         credentials: "include",
       });
       const data = await res.json();
-      console.log("GROUPS DATA");
+      // console.log("GROUPS DATA");
       // console.log(data);
       return data;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -60,8 +60,8 @@ class Dashboard extends React.Component {
       this.setState({
         yourGroupsData: res,
       });
-      console.log("PRINTING YOUR GROUPS DATA");
-      console.log(this.state.yourGroupsData);
+      // console.log("PRINTING YOUR GROUPS DATA");
+      // console.log(this.state.yourGroupsData);
     });
   }
   state = {
@@ -241,7 +241,7 @@ class Dashboard extends React.Component {
     });
   };
   handleApproved = () => {
-    console.log("approvedCalled");
+    // console.log("approvedCalled");
     this.setState({
       submittedDisplay: false,
       duplicatesDisplay: false,
@@ -263,7 +263,7 @@ class Dashboard extends React.Component {
   };
   openGroupInfo = (groupData) => {
     this.handleGroupInfo(groupData.projectTitle, groupData.projectDeadline);
-    console.log(groupData);
+    // console.log(groupData);
     this.setState({
       submittedDisplay: true,
       duplicatesDisplay: false,
@@ -291,7 +291,7 @@ class Dashboard extends React.Component {
     });
   };
   handleComments = () => {
-    console.log("hello");
+    // console.log("hello");
   };
   handleAddDetails = () => {
     this.setState({

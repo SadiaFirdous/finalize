@@ -4,8 +4,8 @@ import GreenTick from "../../media/GreenTick.svg";
 import Cross from "../../media/Cross.svg";
 class SubmittedAndDuplicates extends React.Component {
   approveProject = async (data) => {
-    console.log("DATA FROM ACCEPT CLICK");
-    console.log(data);
+    // console.log("DATA FROM ACCEPT CLICK");
+    // console.log(data);
     const p = await fetch("/updatestudentproject", {
       method: "POST",
       headers: {
@@ -61,8 +61,8 @@ class SubmittedAndDuplicates extends React.Component {
     return (
       <div className="submittedAndDuplicatesMainDiv">
         {this.props.Data.map((data) => {
-          console.log("DATA IS APPROVED");
-          console.log(data.isApproved);
+          // console.log("DATA IS APPROVED");
+          // console.log(data.isApproved);
           return (
             !this.props.flag &&
             !data.isApproved && (
@@ -78,6 +78,9 @@ class SubmittedAndDuplicates extends React.Component {
                     <span className="rollnumbers">{data.teamMem2 + "\n"}</span>
                     <span className="rollnumbers">{data.teamMem3 + "\n"}</span>
                     <span className="rollnumbers">{data.teamMem4 + "\n"}</span>
+                  </div>
+                  <div className="abstractDiv">
+                    <span>{data.abstract}</span>
                   </div>
 
                   {this.props.isTeacher && (

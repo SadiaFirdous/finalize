@@ -32,7 +32,7 @@ class AddDetails extends React.Component {
       // console.log(data);
       return data;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -44,7 +44,7 @@ class AddDetails extends React.Component {
         });
       })
       .then(async () => {
-        console.log("EMAIL FETCHED IS" + this.state.email);
+        // console.log("EMAIL FETCHED IS" + this.state.email);
         if (this.props.myTeamDetails.didAdd) {
           const p = await fetch("/updatestudentproject", {
             method: "POST",

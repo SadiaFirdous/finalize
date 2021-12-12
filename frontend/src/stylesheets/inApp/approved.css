@@ -14,7 +14,11 @@
   cursor: pointer;
   font-size: 16px;
 }
-
+.abstractDiv {
+  width: 60%;
+  font-size: 16px;
+  word-wrap: break-word;
+}
 .statusLogo {
   width: 20px;
 }
