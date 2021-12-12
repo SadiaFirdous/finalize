@@ -7,17 +7,17 @@ import "../../stylesheets/inApp/topbar.css";
 import NotificationPanel from "./NotificationPanel";
 class Topbar extends React.Component {
   state = {
-    name: "Sadia Firdous",
+    name: "",
     notificationPanelDisplay: false,
     inviteUrl: "",
   };
-  handleNotificationDisplay = () => {
-    let bool = this.state.notificationPanelDisplay;
-    this.setState({
-      name: "Sadia Firdous",
-      notificationPanelDisplay: !bool,
-    });
-  };
+  // handleNotificationDisplay = () => {
+  //   let bool = this.state.notificationPanelDisplay;
+  //   this.setState({
+  //     name: "Sadia Firdous",
+  //     notificationPanelDisplay: !bool,
+  //   });
+  // };
   logoutUser = async () => {
     await fetch("/logout", {
       method: "GET",
@@ -30,9 +30,30 @@ class Topbar extends React.Component {
       .then((res) => window.open("http://localhost:3000", "_top"))
       .catch((err) => console.log(err));
   };
+  getUserDetails = async () => {
+    try {
+      const res = await fetch("/data", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      // console.log("CURRENT USER DETAILS");
+      // console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   sendToInviteLink = () => {
     window.location = this.state.inviteUrl;
   };
+  componentDidMount() {
+    this.getUserDetails().then((res) => this.setState({ name: res.name }));
+  }
   render() {
     return (
       <div className="topDiv">
@@ -55,7 +76,7 @@ class Topbar extends React.Component {
           </button>
         </div>
         <div className="iconsDiv">
-          <img
+          {/* <img
             className={
               this.state.notificationPanelDisplay
                 ? "notification notificationActive"
@@ -67,7 +88,7 @@ class Topbar extends React.Component {
           />
           <div className="notificationPanelComponent">
             {this.state.notificationPanelDisplay && <NotificationPanel />}
-          </div>
+          </div> */}
 
           <img className="profilePhoto" src={User} alt="img" />
           <span className="nameText">{this.state.name}</span>

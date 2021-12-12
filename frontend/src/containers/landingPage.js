@@ -12,6 +12,7 @@ class LandingPage extends React.Component {
   state = {
     signInDisplay: true,
     registerDisplay: false,
+    name: "",
     email: "",
     pass: "",
     re_pass: "",
@@ -54,6 +55,7 @@ class LandingPage extends React.Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        name: this.state.name,
         email: this.state.email,
         password: this.state.pass,
         isTeacher: this.state.isTeacher,
@@ -62,10 +64,11 @@ class LandingPage extends React.Component {
     // const data = response.json();
     // console.log(data);
   };
-  setRegisterInfo = (email, pass, isTeacher) => {
+  setRegisterInfo = (name, email, pass, isTeacher) => {
     console.log(email + pass + isTeacher);
     this.setState(
       {
+        name: name,
         email: email,
         pass: pass,
         isTeacher: isTeacher,
