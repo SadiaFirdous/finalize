@@ -30,6 +30,31 @@ class SubmittedAndDuplicates extends React.Component {
       }),
     }).then(window.open("http://localhost:3000/dashboard", "_top"));
   };
+  rejectProject = async (data) => {
+    const p = await fetch("/rejectproject", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        _id: this.props.groupData._id, //because to add into that particular group
+        email: data.email,
+        projectTitle: data.projectTitle,
+        abstract: data.abstract,
+        teamMem1: data.teamMem1,
+        teamMem2: data.teamMem2,
+        teamMem3: data.teamMem3,
+        teamMem4: data.teamMem4,
+        projectLink: data.projectLink,
+        didAdd: true,
+        isApproved: false,
+        completed: false,
+        isEditDetails: false,
+      }),
+    }).then(window.open("http://localhost:3000/dashboard", "_top"));
+  };
   render() {
     // console.log(this.props.isTeacher);
 
@@ -73,7 +98,12 @@ class SubmittedAndDuplicates extends React.Component {
 
                       <div className="declineDiv">
                         <img className="CrossLogo" src={Cross} alt="img" />
-                        <button className="decline">Decline</button>
+                        <button
+                          className="decline"
+                          onClick={() => this.rejectProject(data)}
+                        >
+                          Decline
+                        </button>
                       </div>
                     </div>
                   )}

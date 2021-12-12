@@ -58,7 +58,7 @@ class LandingPage extends React.Component {
         password: this.state.pass,
         isTeacher: this.state.isTeacher,
       }),
-    });
+    }).then(window.open("http://localhost:3000", "_top"));
     // const data = response.json();
     // console.log(data);
   };

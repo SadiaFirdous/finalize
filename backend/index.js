@@ -9,6 +9,7 @@ const ProjectModel = require("./models/project");
 const authenticate = require("./middleware/authenticate");
 const ObjectId = require("mongodb").ObjectId;
 const secrets = require("./secret/secret");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 mongoose.connect(
   "mongodb+srv://dbms_finalize:finalize123@cluster0.5ndw9.mongodb.net/Finalize?retryWrites=true&w=majority",
@@ -17,6 +18,13 @@ mongoose.connect(
 // app.use(cors);
 app.use(express.json());
 app.use(cookieParser());
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "managemyworkhere@gmail.com",
+    pass: secrets.pass,
+  },
+});
 app.post("/register", async (req, res) => {
   console.log(JSON.stringify(req.body));
   try {
@@ -185,8 +193,54 @@ app.post("/updatestudentproject", authenticate, async (req, res) => {
           },
         },
       }
-    );
+    ).then(() => {
+      const mailOptions = {
+        from: "managemyworkhere@gmail.com",
+        to: req.body.email, //change afterwards
+        subject: req.body.projectTitle,
+        text: "Your project is approved",
+      };
+      transporter.sendMail(mailOptions, (err, info) => {
+        console.log(err);
+      });
+    });
   }
+  res.status(200).send();
+});
+app.post("/rejectproject", async (req, res) => {
+  await ProjectModel.updateOne(
+    {
+      _id: ObjectId(req.body._id),
+      "submittedData.email": { $eq: req.body.email },
+    },
+    {
+      $pull: {
+        submittedData: {
+          email: req.body.email,
+          projectTitle: req.body.projectTitle,
+          abstract: req.body.abstract,
+          teamMem1: req.body.teamMem1,
+          teamMem2: req.body.teamMem2,
+          teamMem3: req.body.teamMem3,
+          teamMem4: req.body.teamMem4,
+          projectLink: req.body.projectLink,
+          didAdd: true,
+          isApproved: false,
+          completed: false,
+        },
+      },
+    }
+  ).then(() => {
+    const mailOptions = {
+      from: "managemyworkhere@gmail.com",
+      to: req.body.email, //change afterwards
+      subject: req.body.projectTitle,
+      text: "Your project is rejected. Enjoy",
+    };
+    transporter.sendMail(mailOptions, (err, info) => {
+      console.log(err);
+    });
+  });
   res.status(200).send();
 });
 app.post("/deletegroup", authenticate, async (req, res) => {
