@@ -20,9 +20,13 @@ app.use(express.json());
 app.use(cookieParser());
 const transporter = nodemailer.createTransport({
   service: "gmail",
+  secure: false,
   auth: {
     user: "managemyworkhere@gmail.com",
     pass: secrets.pass,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 app.post("/register", async (req, res) => {
@@ -205,6 +209,32 @@ app.post("/updatestudentproject", authenticate, async (req, res) => {
       });
     });
   }
+  res.status(200).send();
+});
+app.post("/submitProject", async (req, res) => {
+  await ProjectModel.updateOne(
+    {
+      _id: ObjectId(req.body._id),
+      "submittedData.email": { $eq: req.body.email },
+    },
+    {
+      $set: {
+        "submittedData.$": {
+          email: req.body.email,
+          projectTitle: req.body.projectTitle,
+          abstract: req.body.abstract,
+          teamMem1: req.body.teamMem1,
+          teamMem2: req.body.teamMem2,
+          teamMem3: req.body.teamMem3,
+          teamMem4: req.body.teamMem4,
+          projectLink: req.body.projectLink,
+          didAdd: true,
+          isApproved: true,
+          completed: true,
+        },
+      },
+    }
+  );
   res.status(200).send();
 });
 app.post("/rejectproject", async (req, res) => {

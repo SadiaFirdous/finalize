@@ -40,6 +40,7 @@ class GroupInfo extends React.Component {
       })
       .then(() => {
         for (var i = 0; i < this.props.groupData.submittedData.length; i++) {
+          console.log("LOOP");
           if (
             this.props.groupData.submittedData[i].email ===
             this.state.userDetails.email
@@ -49,6 +50,7 @@ class GroupInfo extends React.Component {
             });
           }
         }
+        console.log("MY TEAM DETAILS IN CDM");
         console.log(this.state.myTeamDetails);
       });
   }
