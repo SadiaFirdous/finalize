@@ -19,10 +19,10 @@ class Sidebar extends React.Component {
               <span className="workspaceText">Workspace</span>
             </div>
           </div>
-          <div className="topDivSidebarSection activitySection">
+          {/* <div className="topDivSidebarSection activitySection">
             <img className="sectionLogo" src={Activity} alt="img" />
             <span className="sectionName">Activity</span>
-          </div>
+          </div> */}
           <div className="lineUnderActivityDiv">
             <img src={LineUnderActivity} />
           </div>
@@ -32,12 +32,12 @@ class Sidebar extends React.Component {
               Groups
             </span>
           </div>
-          {this.props.isTeacher && (
+          {/* {this.props.isTeacher && (
             <div className="topDivSidebarSection">
               <img className="sectionLogo" src={Announcements} alt="img" />
               <span className="sectionName">Announcements</span>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="sidebarBottomDiv">
@@ -54,10 +54,10 @@ class Sidebar extends React.Component {
             <img className="sectionLogo" src={Help} alt="img" />
             <span className="sectionName">Help</span>
           </div>
-          <div className="bottomDivSidebarSection settingsSection">
+          {/* <div className="bottomDivSidebarSection settingsSection">
             <img className="sectionLogo" src={Settings} alt="img" />
             <span className="sectionName">Settings</span>
-          </div>
+          </div> */}
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ import FacebookLogo from "../media/FacebookLogo.svg";
 import "../stylesheets/register.css";
 class Register extends React.Component {
   state = {
+    name: "",
     email: "",
     pass: "",
     role: "",
@@ -20,6 +21,7 @@ class Register extends React.Component {
         this.setState({ isTeacher: true }, () => {
           console.log("sending info to landingPage");
           this.props.setRegisterInfo(
+            this.state.name,
             this.state.email,
             this.state.pass,
             this.state.isTeacher
@@ -29,6 +31,7 @@ class Register extends React.Component {
         this.setState({ isTeacher: false }, () => {
           console.log("sending info to landingPage");
           this.props.setRegisterInfo(
+            this.state.name,
             this.state.email,
             this.state.pass,
             this.state.isTeacher
@@ -54,6 +57,13 @@ class Register extends React.Component {
             </select>
           </form>
         </div>
+        <input
+          className="nameInput"
+          placeholder="Name"
+          onChange={(e) => {
+            this.setState({ name: e.target.value });
+          }}
+        ></input>
 
         <input
           className="emailInput"

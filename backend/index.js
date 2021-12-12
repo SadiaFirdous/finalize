@@ -15,7 +15,6 @@ mongoose.connect(
   "mongodb+srv://dbms_finalize:finalize123@cluster0.5ndw9.mongodb.net/Finalize?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
-// app.use(cors);
 app.use(express.json());
 app.use(cookieParser());
 const transporter = nodemailer.createTransport({
@@ -27,6 +26,7 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false,
+    secureProtocol: "TLSv1_method",
   },
 });
 app.post("/register", async (req, res) => {
@@ -41,6 +41,7 @@ app.post("/register", async (req, res) => {
       });
     }
     const user = new UserModel({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       isTeacher: req.body.isTeacher,
@@ -54,7 +55,7 @@ app.post("/register", async (req, res) => {
   }
 });
 app.post("/login", async (req, res) => {
-  console.log("SECRET  :" + secrets.pass);
+  // console.log("SECRET  :" + secrets.pass);
   const user = await UserModel.findOne({ email: req.body.email });
   const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
   console.log(token);
@@ -211,7 +212,7 @@ app.post("/updatestudentproject", authenticate, async (req, res) => {
   }
   res.status(200).send();
 });
-app.post("/submitProject", async (req, res) => {
+app.post("/submitProject", authenticate, async (req, res) => {
   await ProjectModel.updateOne(
     {
       _id: ObjectId(req.body._id),
@@ -237,7 +238,7 @@ app.post("/submitProject", async (req, res) => {
   );
   res.status(200).send();
 });
-app.post("/rejectproject", async (req, res) => {
+app.post("/rejectproject", authenticate, async (req, res) => {
   await ProjectModel.updateOne(
     {
       _id: ObjectId(req.body._id),

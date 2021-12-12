@@ -23,6 +23,7 @@
   flex-direction: row;
 }
 
+.nameInput,
 .emailInput,
 .passwordInput,
 .confirmPasswordInput {
