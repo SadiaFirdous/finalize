@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "../../stylesheets/inApp/viewSubmissions.css";
 class ViewSubmission extends React.Component {
   render() {
-    console.log("MY TEAM DETAILS");
-    console.log(this.props.teamData);
+    // console.log("MY TEAM DETAILS");
+    // console.log(this.props.teamData);
     return (
       <div className="ViewSubmissionMainDiv">
         <div className="projectTitleDv">

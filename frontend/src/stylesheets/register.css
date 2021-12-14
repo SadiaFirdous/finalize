@@ -1,3 +1,6 @@
+::placeholder {
+  color: #7a7979;
+}
 .registerMainDiv {
   display: flex;
   flex-direction: column;
@@ -28,7 +31,7 @@
 .passwordInput,
 .confirmPasswordInput {
   padding: 16px 10px;
-  color: #7a7979;
+  color: black;
   font-weight: 600;
   border-radius: 10px;
   width: 80%;

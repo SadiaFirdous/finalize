@@ -28,7 +28,7 @@ class Topbar extends React.Component {
       credentials: "include",
     })
       .then((res) => window.open("http://localhost:3000", "_top"))
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   };
   getUserDetails = async () => {
     try {
@@ -45,7 +45,7 @@ class Topbar extends React.Component {
       // console.log(data);
       return data;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   sendToInviteLink = () => {

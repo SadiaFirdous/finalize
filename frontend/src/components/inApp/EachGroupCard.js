@@ -39,8 +39,8 @@ class EachGroupCard extends React.Component {
       <div
         className="groupDiv"
         onClick={() => {
-          console.log("inEachGroupInfo");
-          console.log(this.props.groupData);
+          // console.log("inEachGroupInfo");
+          // console.log(this.props.groupData);
           this.props.openGroupInfo(this.props.groupData);
         }}
       >

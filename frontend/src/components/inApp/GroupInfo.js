@@ -28,7 +28,7 @@ class GroupInfo extends React.Component {
       // console.log(data);
       return data;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   componentDidMount() {
@@ -40,7 +40,7 @@ class GroupInfo extends React.Component {
       })
       .then(() => {
         for (var i = 0; i < this.props.groupData.submittedData.length; i++) {
-          console.log("LOOP");
+          // console.log("LOOP");
           if (
             this.props.groupData.submittedData[i].email ===
             this.state.userDetails.email
@@ -50,15 +50,15 @@ class GroupInfo extends React.Component {
             });
           }
         }
-        console.log("MY TEAM DETAILS IN CDM");
-        console.log(this.state.myTeamDetails);
+        // console.log("MY TEAM DETAILS IN CDM");
+        // console.log(this.state.myTeamDetails);
       });
   }
 
   render() {
     // console.log(this.props.isTeacher);
-    console.log("in groupInfo");
-    console.log(this.props.groupData);
+    // console.log("in groupInfo");
+    // console.log(this.props.groupData);
     return (
       <div className="GroupInfoMainDiv">
         <div className="sectionsDiv">

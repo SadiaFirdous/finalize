@@ -23,6 +23,7 @@
 .rollNumbersDiv {
   font-size: 20px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -32,7 +33,12 @@
   width: 50%;
   justify-content: space-between;
 }
-.options {
+.abstractDiv {
+  width: 60%;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+.approvedDiv .options {
   display: flex;
   flex-direction: row;
   justify-content: center;

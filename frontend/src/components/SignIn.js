@@ -39,9 +39,19 @@ class SignIn extends React.Component {
         >
           <button className="signInButtonInComponent">Sign In</button>
         </Link> */}
-   
-          <button className="signInButtonInComponent" onClick={()=>this.props.setLoginInfo(this.state.email, this.state.pass)}>Sign In</button>
-      
+
+        <button
+          className="signInButtonInComponent"
+          onClick={() =>
+            this.props.setLoginInfo(this.state.email, this.state.pass)
+          }
+        >
+          Sign In
+        </button>
+
+        {this.props.stat == 401 && (
+          <span className="errorMsg">Invalid Details</span>
+        )}
 
         <div className="signInContinueWithDiv">
           <img src={Line} alt="img" />

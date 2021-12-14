@@ -24,7 +24,7 @@ class CreateGroup extends React.Component {
       }),
     }).then(window.open("http://localhost:3000/dashboard", "_top"));
     const data = await p.json();
-    console.log(data);
+    // console.log(data);
   };
 
   render() {
