@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Line from "../media/Line.svg";
-// import GoogleLogo from "../media/GoogleLogo.svg";
-// import FacebookLogo from "../media/FacebookLogo.svg";
+import GoogleLogo from "../media/GoogleLogo.svg";
+import FacebookLogo from "../media/FacebookLogo.svg";
 import "../stylesheets/register.css";
+import validator from "validator";
 class Register extends React.Component {
   state = {
     name: "",
@@ -10,11 +11,16 @@ class Register extends React.Component {
     pass: "",
     role: "",
     isTeacher: false,
+    errMsg: "",
   };
   verifyPass = () => {
     // console.log("inVerifyPass");
-    if (this.state.pass != this.state.re_pass) {
-      // console.log("Not equal");
+    if (
+      this.state.pass != this.state.re_pass ||
+      validator.isEmail(this.state.email)
+    ) {
+      console.log("Not equal");
+      this.setState({ errMsg: "Please provide valid details" });
     } else {
       if (this.state.role == "Teacher") {
         this.setState({ isTeacher: true }, () => {
@@ -90,15 +96,16 @@ class Register extends React.Component {
         <button className="registerInButtonComponent" onClick={this.verifyPass}>
           Register
         </button>
+        <span className="errorMsg">{this.state.errMsg}</span>
         <div className="registerOrContinueWithDiv">
           <img src={Line} alt="img" />
           <span className="orContinueWithText">or continue with</span>
           <img src={Line} alt="img" />
         </div>
-        {/* <div className="registerWithSocials">
+        <div className="registerWithSocials">
           <img className="googleLogoRegister" src={GoogleLogo} alt="img" />
           <img className="facebookLogoRegister" src={FacebookLogo} alt="img" />
-        </div> */}
+        </div>
       </div>
     );
   }

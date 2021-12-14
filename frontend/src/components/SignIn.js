@@ -49,6 +49,10 @@ class SignIn extends React.Component {
           Sign In
         </button>
 
+        {this.props.stat == 401 && (
+          <span className="errorMsg">Invalid Details</span>
+        )}
+
         <div className="signInContinueWithDiv">
           <img src={Line} alt="img" />
           <span className="orContinueWithText">or continue with</span>

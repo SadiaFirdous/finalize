@@ -17,6 +17,7 @@ class LandingPage extends React.Component {
     pass: "",
     re_pass: "",
     isTeacher: false,
+    stat: 200,
   };
   handleSignin = () => {
     this.setState({ signInDisplay: true, registerDisplay: false });
@@ -36,7 +37,12 @@ class LandingPage extends React.Component {
         password: this.state.pass,
       }),
     }).then((res) => {
-      window.open("http://localhost:3000/dashboard", "_top");
+      if (res.status == 401) {
+        console.log("UNAUTHORIZED");
+        this.setState({ stat: 401 });
+      } else {
+        window.open("http://localhost:3000/dashboard", "_top");
+      }
     });
   };
   setLoginInfo = (email, pass) => {
@@ -134,7 +140,7 @@ class LandingPage extends React.Component {
               <Register setRegisterInfo={this.setRegisterInfo} />
             )}
             {this.state.signInDisplay && (
-              <SignIn setLoginInfo={this.setLoginInfo} />
+              <SignIn setLoginInfo={this.setLoginInfo} stat={this.state.stat} />
             )}
           </div>
         </div>

@@ -56,13 +56,23 @@ app.post("/register", async (req, res) => {
 });
 app.post("/login", async (req, res) => {
   // console.log("SECRET  :" + secrets.pass);
-  const user = await UserModel.findOne({ email: req.body.email });
-  const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
-  console.log(token);
-  res.cookie("jwtoken", token, {
-    httpOnly: true,
-  });
-  res.send();
+  try {
+    const user = await UserModel.findOne({ email: req.body.email });
+    console.log("USER DETAILS");
+    if (user.password === req.body.password) {
+      console.log(user);
+      const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+      console.log(token);
+      res.cookie("jwtoken", token, {
+        httpOnly: true,
+      });
+      res.status(200).send();
+    } else {
+      res.status(401).send();
+    }
+  } catch (err) {
+    res.status(401).send();
+  }
 });
 app.get("/data", authenticate, (req, res) => {
   res.send(req.rootUser);
@@ -71,6 +81,7 @@ app.get("/logout", (req, res) => {
   res.clearCookie("jwtoken", { path: "/" });
   res.status(200).send("Logged Out");
 });
+app.post("/forgotpassword", (req, res) => {});
 app.post("/creategroupapi", authenticate, async (req, res) => {
   console.log(req.rootUser);
   console.log(req.body);
