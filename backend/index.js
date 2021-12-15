@@ -102,7 +102,7 @@ app.post("/creategroupapi", authenticate, async (req, res) => {
       },
       {
         $set: {
-          link: "http://localhost:3000/invite/" + project._id.toString(),
+          link: "https://finalize.netlify.app/invite/" + project._id.toString(),
         },
       }
     );
